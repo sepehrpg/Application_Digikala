@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="2dp"
+    android:id="@+id/CardViewProductOffer"
+    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="234dp"
+        >
+
+        <ImageView
+            android:id="@+id/Image_post"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:padding="15dp"
+            tools:src="@drawable/slider1"
+            />
+
+        <TextView
+            android:id="@+id/Tv_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Image_post"
+            android:layout_marginTop="0dp"
+            android:textAlignment="center"
+            tools:text="ایفون X"
+            android:fontFamily="@font/iranian_sans"
+
+            />
+        <View
+            android:id="@+id/viewProduct"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#ACA3A3"
+            android:layout_below="@+id/Tv_title2"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/Tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewProduct"
+            android:textAlignment="center"
+            tools:text="200000000"
+            android:textColor="#C00404"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/iranian_sans"
+
+            />
+
+        <TextView
+            android:id="@+id/Tv_price_offer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Tv_price"
+            android:textAlignment="center"
+            tools:text="200000000"
+            android:textColor="#069c27"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/iranian_sans"
+
+            />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

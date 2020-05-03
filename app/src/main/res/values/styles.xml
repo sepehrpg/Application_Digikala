@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#f5363e</item>
+        <item name="colorPrimaryDark">#582A2D</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
+
+
+    <style name="NavigationView" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:listDivider">@color/meshki_kamrang</item>
+        <item name="android:textColorSecondary">@color/red</item>
+        <item name="android:fontFamily">@font/iranian_sans</item>
+    </style>
+
+    <style name="tablayout_font"  parent="Theme.AppCompat.Light.NoActionBar" >
+
+        <item name="android:fontFamily">@font/iranian_sans</item>
+
+    </style>
+
+</resources>

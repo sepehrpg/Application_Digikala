@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".ViewPager_Tablayout_Category.Act_ViewPager_Category"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layoutDirection="ltr"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/iranian_sans"
+                    android:gravity="right|center_vertical"
+                    android:padding="5dp"
+                    android:text=" دسته بندی محصولات"
+                    android:textColor="#fff"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/Img_back_Category"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:src="@drawable/ic_back_right_white"
+                    android:layout_marginRight="13dp"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layoutDirection="rtl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tablayout_category"
+            app:tabTextColor="#fff"
+            app:tabRippleColor="#000"
+            app:tabIndicatorColor="#fff"
+            app:tabSelectedTextColor="#2C2C2C"
+            android:scrollbars="none"
+            app:tabMode="scrollable"
+            android:theme="@style/tablayout_font"
+            >
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager_category"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

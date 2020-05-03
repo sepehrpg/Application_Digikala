@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/mainGp" android:checkableBehavior="single">
+
+
+    <group android:checkableBehavior="single" android:id="@+id/gp1"
+        android:enabled="true"
+        android:visible="true"
+        >
+
+        <item
+            android:title="خانه"
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            />
+        <item
+            android:title="لیست دسته بندی محصولات"
+            android:id="@+id/list"
+            android:icon="@drawable/ic_category"
+            />
+
+    </group>
+
+    <group android:checkableBehavior="single" android:id="@+id/gp2" >
+        <item
+            android:title="سبد خرید"
+            android:id="@+id/buy"
+            android:icon="@drawable/ic_store_black_24dp"
+            />
+
+    </group>
+
+    <group android:id="@+id/gp3" android:checkableBehavior="single" >
+
+        <item
+            android:title="پرفروش ترین ها"
+            android:id="@+id/product_sale"
+            android:icon="@drawable/ic_star1"
+            />
+
+        <item
+            android:title="پربازدید ترین ها"
+            android:id="@+id/product_show"
+            android:icon="@drawable/ic_star2"
+            />
+
+        <item
+            android:title="جدید ترین ها"
+            android:id="@+id/product_new"
+            android:icon="@drawable/ic_star1"
+            />
+
+    </group>
+
+        <group
+            android:id="@+id/gp4" android:checkableBehavior="single">
+
+
+            <item
+                android:title="تنظیمات"
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                />
+
+            <item
+                android:title="سوالات متداول"
+                android:id="@+id/question"
+                android:icon="@drawable/ic_priority_high_black_24dp"
+                />
+
+            <item
+                android:title="درباره ما"
+                android:id="@+id/about"
+                android:icon="@drawable/ic_person_black_24dp"
+                />
+
+
+        </group>
+
+
+
+    </group>
+
+
+
+
+</menu>

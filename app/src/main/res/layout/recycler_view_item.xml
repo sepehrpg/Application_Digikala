@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:layoutDirection="rtl"
+    android:layout_marginBottom="1dp">
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:layout_weight=".50"
+        android:fontFamily="@font/iranian_sans"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:padding="5dp"
+        tools:text="تعداد سیم کارت"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="#f7f6f6"
+        android:layout_margin="1dp"/>
+    <TextView
+        android:id="@+id/text_info"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="right"
+        android:padding="15dp"
+        android:layout_weight=".50"
+        android:layout_gravity="right"
+        android:fontFamily="@font/iranian_sans"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        tools:text="دو سیم کارته" />
+
+
+</LinearLayout>

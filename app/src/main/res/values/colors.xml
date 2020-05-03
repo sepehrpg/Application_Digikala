@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="tosi">#e6e3e3</color>
+    <color name="background_main">#eeeeee</color>
+
+    <color name="red">#CE1B0E</color>
+
+    <color name="banafsh">#9C27B0</color>
+    <color name="ghermez">#CE1B0E</color>
+    <color name="meshkii">#2B2828</color>
+    <color name="sefid">#fff</color>
+    <color name="ghemezkamrang">#FF5722</color>
+    <color name="narenji">#FF9800</color>
+    <color name="zard">#FFEB3B</color>
+    <color name="sabzlajani">#8BC34A</color>
+    <color name="sabz">#4CAF50</color>
+    <color name="sabzporrang">#14CA1C</color>
+    <color name="abikamrang">#009688</color>
+    <color name="abiasemani">#00BCD4</color>
+    <color name="abi">#03A9F4</color>
+    <color name="abiporrang">#2196F3</color>
+    <color name="sormeyi">#3F51B5</color>
+    <color name="sorati">#E91E63</color>
+    <color name="khakestari">#B1B0B0</color>
+
+
+    <color name="meshki_kamrang">#B1B0B0</color>
+</resources>

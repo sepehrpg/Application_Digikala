@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bk45_4"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="left"
+            >
+
+
+            <ImageView
+                android:id="@+id/Img_search"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_search_black_24dp"
+                android:tint="#fff"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/Img_store_main"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_store_black_24dp"
+                android:tint="#fff"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+
+                />
+
+
+            <ImageView
+                android:id="@+id/Img_search_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:tint="#fff"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/Edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Search"
+                android:gravity="left"
+                android:textColorHint="#fff"
+                android:textSize="14sp"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:drawableTint="#fff"
+                android:backgroundTint="#fff"
+                android:visibility="gone"
+                />
+
+
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>

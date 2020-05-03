@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layoutDirection="ltr"
+            >
+
+            <ImageView
+            android:id="@+id/Img_Category"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@mipmap/logo_splash"
+            android:scaleType="centerCrop"
+                android:layout_marginLeft="5dp"
+            />
+
+            <TextView
+                android:id="@+id/Tv_Title_ViewpageTablayout"
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="موبایل"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="15dp"
+                android:padding="5dp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#979696"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
