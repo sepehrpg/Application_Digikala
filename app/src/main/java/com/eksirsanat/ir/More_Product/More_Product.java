@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.eksirsanat.ir.Action.Convert_PX_To_Dp;
 import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
 import com.eksirsanat.ir.More_Product.Images.Slider_PageAdapter_Product;
+import com.eksirsanat.ir.Property_Header.stickyheader.Act_Property_Header;
 import com.eksirsanat.ir.R;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class More_Product extends AppCompatActivity {
 
     Context context;
 
-    TextView txt_name,txt_nameEn,txt_tile_toolbar,Tv__sec,Tv_min,Tv_hour;
+    TextView txt_name,txt_nameEn,txt_tile_toolbar,Tv__sec,Tv_min,Tv_hour,Txt_property;
 
     Intent GetIntent;
 
@@ -87,6 +88,7 @@ public class More_Product extends AppCompatActivity {
         scrollView=findViewById(R.id.Scroll_MoreProduct);
         img_shop=findViewById(R.id.Img_shop);
         txt_tile_toolbar=findViewById(R.id.Tv_Toolbar_Title);
+        Txt_property=findViewById(R.id.Txt_property);
 
 
 
@@ -142,6 +144,20 @@ public class More_Product extends AppCompatActivity {
         });
 
 
+        Txt_property.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nameProduct=txt_name.getText().toString().trim();
+
+                Intent intent=new Intent(context, Act_Property_Header.class);
+                intent.putExtra("nameProduct",nameProduct);
+
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -164,13 +180,14 @@ public class More_Product extends AppCompatActivity {
             @Override
             public void list(List<DataModer_Product_MoreProduct> data_modelproduct) {
 
+
                 for (int i=0; i<data_modelproduct.size() ;i++){
                     DataModer_Product_MoreProduct productData=data_modelproduct.get(i);
                     name_title=productData.getName();
                     txt_name.setText(productData.getName());
                     txt_nameEn.setText(productData.getNameEn());
-
                 }
+
             }
         }, new Api_Product_MoreProduct.InterFace_Image() {
             @Override

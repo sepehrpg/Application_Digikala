@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Panel_User.Act_Viryfy_Code">
+
+    <include layout="@layout/toolbar_layout"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:padding="1dp"
+        android:background="@drawable/layer_view3"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#C9F3CB"
+            android:padding="15dp"
+            >
+            <TextView
+                android:id="@+id/Txt_show_InfoUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="کد تایید برای شماره 092132103 ارسال شد"
+                android:textSize="18sp"
+                android:fontFamily="@font/iranian_sans"
+
+                />
+
+            <TextView
+                android:id="@+id/Txt_EditEmailOrPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ویرایش ایمیل"
+                android:textSize="18sp"
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="15dp"
+                android:textColor="#013F8A"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="کد تایید را وارد نمایید"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="18sp"
+            android:textColor="#000"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+        <EditText
+            android:id="@+id/Edt_Code1"
+            android:layout_width="45dp"
+            android:inputType="number"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLength="1"
+            />
+        <EditText
+            android:id="@+id/Edt_Code2"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLength="1"
+            android:inputType="number"
+
+            />
+        <EditText
+            android:id="@+id/Edt_Code3"
+            android:maxLength="1"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+            android:inputType="number"
+
+            />
+        <EditText
+            android:id="@+id/Edt_Code4"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLength="1"
+            android:inputType="number"
+            />
+        <EditText
+            android:id="@+id/Edt_Code5"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLength="1"
+            android:inputType="number"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        >
+        <TextView
+            android:id="@+id/Txt_RepeatCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ارسال مجدد کد تایید :50 ثانیه"
+            android:gravity="center"
+            tools:textSize="18sp"
+            android:textColor="#000"
+            android:fontFamily="@font/iranian_sans"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

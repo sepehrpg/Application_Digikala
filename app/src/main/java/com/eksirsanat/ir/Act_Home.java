@@ -43,6 +43,7 @@ import com.eksirsanat.ir.Main_Home.Product.Datamodel_ListProduct;
 import com.eksirsanat.ir.Main_Home.Product.product_offer.Api_product_Offer;
 import com.eksirsanat.ir.Main_Home.Product.product_offer.Custom_Product_Offer;
 import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
+import com.eksirsanat.ir.Panel_User.Act_LoginActivity;
 import com.eksirsanat.ir.ViewPager_Tablayout_Category.Act_ViewPager_Category;
 import com.google.android.material.navigation.NavigationView;
 
@@ -199,7 +200,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
         dg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Act_Home.this, "LoginAndRegister", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Act_Home.this, Act_LoginActivity.class));
+
             }
         });
 
@@ -567,7 +569,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProduct=findViewById(R.id.custom_Product_porforosh);
 
-                customProduct.GetListProduct();
+                customProduct.ViewAndCast();
                 customProduct.getList(listProductList);
                 customProduct.setTitle("محصولات پر فروش");
 
@@ -583,7 +585,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProductNew=findViewById(R.id.custom_Product_new);
 
-                customProductNew.GetListProduct();
+                customProductNew.ViewAndCast();
                 customProductNew.getList(listProductList);
                 customProductNew.setTitle("جدید ترین محصولات");
             }

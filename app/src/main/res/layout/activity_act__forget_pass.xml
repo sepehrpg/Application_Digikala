@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:background="#fff"
+    >
+
+    <include
+        layout="@layout/toolbar_layout"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:fitsSystemWindows="true"
+
+        >
+
+
+        <EditText
+            android:id="@+id/Edt_ForgetPassChange"
+            android:inputType="textWebEmailAddress"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_email_black_24dp"
+            android:hint="ایمیل خود را وارد کنید"
+            android:drawablePadding="10dp"
+            android:backgroundTint="#1FDB27"
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:fitsSystemWindows="true"
+        >
+
+        <Button
+            android:id="@+id/Btn_ChangeForgetPass"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="تغییر رمز عبور"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="20dp"
+            android:gravity="center|center_vertical"
+            android:background="#0453B3"
+            android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+            android:drawableTint="#fff"
+            android:textColor="#fff"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -31,10 +31,6 @@ public class AdapterViewpager_TabCategory extends PagerAdapter { //use for image
     public AdapterViewpager_TabCategory( Context context,List<String> strings){
         this.context=context;
         this.strings=strings;
-
-
-
-
     }
 
 
@@ -50,8 +46,7 @@ public class AdapterViewpager_TabCategory extends PagerAdapter { //use for image
 
     @Nullable
     @Override
-    public CharSequence getPageTitle(int position) {
-
+    public CharSequence getPageTitle(int position) { //for tablayout
         return strings.get(position);
     }
 

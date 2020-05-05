@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -39,8 +40,9 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
     int HeaderDone=0,ChildDone=0;
 
     SectionAdapter adapter;
+    TextView NameProduct;
 
-    String url;
+    String url,nameProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,10 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
     public void Cast(){
         imag_back=findViewById(R.id.Image_back_Property);
         recyclerView=findViewById(R.id.ReeView_Property);
+        nameProduct=getIntent().getStringExtra("nameProduct");
+        NameProduct=findViewById(R.id.nameProduct);
+
+        NameProduct.setText(nameProduct);
 
         imag_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +94,7 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
                         JSONObject jsonObject=jsonArray.getJSONObject(i);
                         HeaderModel headerModel=new HeaderModel(i);
                         headerModel.setheader(jsonObject.getString("name"));
-                        Log.i("one",jsonObject.getString("name"));
+                        //Log.i("one",jsonObject.getString("name"));
                         sectionArrayList.add(headerModel);
                         HeaderDone=HeaderDone+1;
 
@@ -96,7 +102,7 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
                         for (int a=0; a<jsonArray1.length() ;a++){
 
                             JSONObject jsonObject1=jsonArray1.getJSONObject(a);
-                            Log.i("tow",jsonObject1.getString("name"));
+                            //Log.i("tow",jsonObject1.getString("name"));
                             ChildModel childModel=new ChildModel(0);
                             childModel.setChild(jsonObject1.getString("name"));
                             childModel.setInfo(jsonObject1.getString("valper"));

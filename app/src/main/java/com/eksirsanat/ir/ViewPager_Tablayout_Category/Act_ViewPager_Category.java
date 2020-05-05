@@ -48,7 +48,7 @@ public class Act_ViewPager_Category extends AppCompatActivity implements Config 
         String url=urlHome+"catA.php";
         final List<String> listTitle=new ArrayList<>();
 
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() { //for get cat 0 title and id
             @Override
             public void onResponse(JSONObject response) {
 
@@ -65,6 +65,9 @@ public class Act_ViewPager_Category extends AppCompatActivity implements Config 
 
                     viewPager.setAdapter(adapterViewpager_tabCategory);
                     tabLayout.setupWithViewPager(viewPager);
+
+
+                    //set Animation
                       final float MIN_SCALE = 0.65f;
                       final float MIN_ALPHA = 0.3f;
                     viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {

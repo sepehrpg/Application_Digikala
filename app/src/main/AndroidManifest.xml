@@ -11,11 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Property_Header.stickyheader.Act_Property_Header">
-
+        <activity android:name=".Panel_User.Act_ForgetPass"></activity>
+        <activity android:name=".Panel_User.Act_ChangePassword" />
+        <activity android:name=".Panel_User.Act_Viryfy_Code"></activity>
+        <activity android:name=".Panel_User.Act_LoginActivity">
 
         </activity>
-        <activity android:name=".ViewPager_Tablayout_Category.More_Category.Act_Cat_Home"></activity>
+        <activity
+            android:name=".Panel_User.Act_Registeri"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Search_Product.Act_Search_Product" />
+        <activity android:name=".Property_Header.stickyheader.Act_Property_Header" />
+        <activity android:name=".ViewPager_Tablayout_Category.More_Category.Act_Cat_Home" />
         <activity android:name=".ViewPager_Tablayout_Category.Act_ViewPager_Category" />
         <activity android:name=".More_Product.More_Product" />
         <activity android:name=".Main_Home.Menu_Navigation.Act_About_Company" />

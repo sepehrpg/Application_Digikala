@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:background="#fff"
+    tools:context=".Panel_User.Act_LoginActivity">
+
+    <include
+        layout="@layout/toolbar_layout"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:fitsSystemWindows="true"
+
+        >
+
+
+        <EditText
+            android:id="@+id/Edt_Login_Email"
+            android:inputType="textWebEmailAddress"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_email_black_24dp"
+            android:hint="ایمیل خود را وارد کنید"
+            android:drawablePadding="10dp"
+            android:backgroundTint="#1FDB27"
+            />
+
+        <EditText
+            android:id="@+id/Edt_Login_Pass"
+            android:gravity="right"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:drawableRight="@drawable/ic_lock_black_24dp"
+            android:hint="کلمه عبور"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#1FDB27"
+            />
+
+        <CheckBox
+            android:id="@+id/Check_Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="35dp"
+            android:fontFamily="@font/iranian_sans"
+            android:text="نمایش کلمه عبور" />
+
+        <TextView
+            android:id="@+id/Txt_Login_Pass_Forgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/layer_view"
+            android:fontFamily="@font/iranian_sans"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="کلمه عبور را فراموش کرده اید؟"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Txt_Login_Register"
+            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iranian_sans"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="#1BA821"
+            android:background="@drawable/layer_view2"
+            android:text="ثبت نام در فروشگاه"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:fitsSystemWindows="true"
+        >
+
+        <Button
+            android:id="@+id/Btn_Login"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="ورود به فروشگاه"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="20dp"
+            android:gravity="center|center_vertical"
+            android:background="#0453B3"
+            android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+            android:drawableTint="#fff"
+            android:textColor="#fff"
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

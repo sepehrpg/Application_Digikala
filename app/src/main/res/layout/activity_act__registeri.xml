@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:fitsSystemWindows="true"
+
+    tools:context=".Panel_User.Act_Registeri">
+
+    <include
+        layout="@layout/toolbar_layout"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="اگر قبلا ثبت نام کرده اید نیاز به ثبت نام مجدد ندارید"
+        android:gravity="center"
+        android:fontFamily="@font/iranian_sans"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:fitsSystemWindows="true"
+
+        >
+
+
+        <EditText
+            android:id="@+id/Edt_Register_Email"
+            android:inputType="textWebEmailAddress"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_email_black_24dp"
+            android:hint="ایمیل خود را وارد کنید"
+            android:drawablePadding="10dp"
+            android:backgroundTint="#1FDB27"
+            />
+
+        <EditText
+            android:id="@+id/Edt_Register_Pass"
+            android:gravity="right"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:drawableRight="@drawable/ic_lock_black_24dp"
+            android:hint="کلمه عبور"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#1FDB27"
+
+            />
+
+        <CheckBox
+            android:id="@+id/Check_Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/iranian_sans"
+            android:text="نمایش کلمه عبور"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:fitsSystemWindows="true"
+
+        >
+
+        <Button
+            android:id="@+id/Btn_Register"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="ثبت نام در فروشگاه"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="20dp"
+            android:gravity="center|center_vertical"
+            android:background="#34B62B"
+            android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+            android:drawableTint="#fff"
+            android:textColor="#fff"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

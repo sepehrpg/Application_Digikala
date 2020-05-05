@@ -56,10 +56,10 @@ public class Act_Cat_Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__cat__home);
         Cast();
-        //Header();
+        Header();
 
-        //GetList_CustomProduct_Porforosh();
-        SetUpExpandRecView();
+        GetList_CustomProduct_Porforosh();
+        //SetUpExpandRecView();
     }
 
     void Cast(){
@@ -85,7 +85,7 @@ public class Act_Cat_Home extends AppCompatActivity {
     }
 
 
-    void SetUpExpandRecView(){
+    /*void SetUpExpandRecView(){
 
 
       Api_Expand_Server_1.GetListCategory_2(Act_Cat_Home.this, new Api_Expand_Server_1.GetAllList() {
@@ -134,20 +134,20 @@ public class Act_Cat_Home extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
 
 
 
 
-    /*void GetList_CustomProduct_Porforosh(){
+    void GetList_CustomProduct_Porforosh(){
 
         Api_product.GetLsit_Product("product-sale",context, new Api_product.ListProduct() {
             @Override
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProduct=findViewById(R.id.custom_Product_porforosh);
 
-                customProduct.GetListProduct();
+                customProduct.ViewAndCast();
                 customProduct.getList(listProductList);
                 customProduct.setTitle("محصولات پر فروش");
 
@@ -163,10 +163,10 @@ public class Act_Cat_Home extends AppCompatActivity {
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProductNew=findViewById(R.id.custom_Product_new);
 
-                customProductNew.GetListProduct();
+                customProductNew.ViewAndCast();
                 customProductNew.getList(listProductList);
                 customProductNew.setTitle("جدید ترین محصولات");
             }
         });
-    }*/
+    }
 }

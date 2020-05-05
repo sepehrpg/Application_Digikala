@@ -14,7 +14,7 @@ import com.eksirsanat.ir.R;
 
 import java.util.List;
 
-public class Custom_Product extends RelativeLayout {
+public class Custom_Product extends RelativeLayout { //Example Activity
 
     TextView Tv_title,Tv_product_all;
     RecyclerView recyclerView;
@@ -23,25 +23,25 @@ public class Custom_Product extends RelativeLayout {
 
     public Custom_Product(Context context) {
         super(context);
-        GetListProduct();
+        ViewAndCast();
     }
 
     public Custom_Product(Context context, AttributeSet attrs) {
         super(context, attrs);
-        GetListProduct();
+        ViewAndCast();
 
     }
 
     public Custom_Product(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        GetListProduct();
+        ViewAndCast();
 
     }
 
     public Custom_Product(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 
         super(context, attrs, defStyleAttr, defStyleRes); //this error for version android and not import
-        GetListProduct();
+        ViewAndCast();
 
     }
 
@@ -50,7 +50,7 @@ public class Custom_Product extends RelativeLayout {
 
     //We Define ....................................................................................
 
-    public void GetListProduct(){
+    public void ViewAndCast(){
 
         //View view=View.inflate(getContext(),R.layout.product_layout,this); //is true
 
