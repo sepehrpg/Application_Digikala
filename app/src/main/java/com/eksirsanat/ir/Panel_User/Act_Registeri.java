@@ -13,9 +13,13 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.eksirsanat.ir.Action.Get_Info;
+import com.eksirsanat.ir.Panel_User.Api.Api_Panel;
 import com.eksirsanat.ir.R;
 import com.eksirsanat.ir.Search_Product.Act_Search_Product;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class Act_Registeri extends AppCompatActivity {
 
@@ -28,12 +32,17 @@ public class Act_Registeri extends AppCompatActivity {
 
     CheckBox checkBox;
 
+    ProgressWheel progressWheel;
+    Api_Panel api_panel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__registeri);
+        Get_Info.get_Info(Act_Registeri.this);
         Cast();
         onClick();
+        ok_Register();
     }
 
 
@@ -47,9 +56,10 @@ public class Act_Registeri extends AppCompatActivity {
         edt_pass=findViewById(R.id.Edt_Register_Pass);
         btn_register=findViewById(R.id.Btn_Register);
         checkBox=findViewById(R.id.Check_Register);
+        progressWheel=findViewById(R.id.progress_wheel_Register);
         Title_Custom_Toolbar.setText("ثبت نام");
-
-
+        progressWheel.setVisibility(View.GONE);
+        api_panel=new Api_Panel(this,progressWheel);
     }
 
 
@@ -94,7 +104,44 @@ public class Act_Registeri extends AppCompatActivity {
             }
         });
 
+    }
+
+    void ok_Register(){
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String username=edt_email.getText().toString().trim();
+                String password=edt_pass.getText().toString().trim();
+
+                if (username.length()<2){
+                    edt_email.requestFocus();
+                    edt_email.setError("لطفا ایمیل را وارد کنید");
+                    //Toast.makeText(Act_Registeri.this, "ایمیل خود را صحیح وارد کنید", Toast.LENGTH_SHORT).show();
+                    //return;
+                }
+
+                else if (password.length()<4){
+                    edt_pass.requestFocus();
+                    edt_pass.setError("پسورد شما باید حداقل 4 کاراکتر باشد");
+
+                    //Toast.makeText(Act_Registeri.this, "پسورد شما باید حداقل 4 کاراکتر باشد", Toast.LENGTH_SHORT).show();
+                   // return;
+                }
+
+                else {
+                    api_panel.Get_RegisterPanel(username,password);
+                }
+
+
+
+
+            }
+        });
 
     }
+
+
 
 }

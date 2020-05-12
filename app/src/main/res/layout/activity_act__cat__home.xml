@@ -12,8 +12,7 @@
     android:id="@+id/drwLayout"
     >
 
-
-    <ExpandableListView
+    <!--<ExpandableListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ExpandListView"
@@ -23,10 +22,8 @@
         android:backgroundTint="#fff"
         >
 
-    </ExpandableListView>
+    </ExpandableListView>-->
 
-
-<!--
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -185,7 +182,7 @@
         >
 
     </com.google.android.material.navigation.NavigationView>
--->
+
 
 
 

@@ -7,6 +7,15 @@ public class Datamodel_ListProduct {
     String price_sale;
     String name;
     String pic;
+    String idcat;
+
+    public String getIdcat() {
+        return idcat;
+    }
+
+    public void setIdcat(String idcat) {
+        this.idcat = idcat;
+    }
 
     public String getOffer() {
         return offer;

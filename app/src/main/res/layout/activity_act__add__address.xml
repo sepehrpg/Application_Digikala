@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".Panel_User.Panel.EditPanel.Act_Add_Address">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layoutDirection="rtl"
+            android:background="@color/ghemezkamrang">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="left|center_vertical"
+                >
+
+                <ImageView
+                    android:id="@+id/Img_back_Address"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="9dp"
+                    android:src="@drawable/ic_cancel"
+                    android:tint="#333333"
+
+                    />
+                <TextView
+                    android:id="@+id/Title_Custom_Toolbar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="اضافه کردن آدرس"
+                    android:gravity="right|center_vertical"
+                    android:textSize="18dp"
+                    android:paddingRight="10dp"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textColor="#fff"
+                    />
+
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:id="@+id/Edt_nameUserE_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:hint="نام و نام خانوادگی"
+            android:textColor="#1A1919"
+            android:fontFamily="@font/iranian_sans"
+            android:paddingRight="25dp"
+            />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/Edt_MobileE_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:hint="شماره موبایل"
+            android:textColor="#1A1919"
+            android:fontFamily="@font/iranian_sans"
+            android:paddingRight="25dp"
+            />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/Edt_PhoneE_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:hint="شماره تلفن ثابت"
+            android:textColor="#1A1919"
+            android:fontFamily="@font/iranian_sans"
+            android:paddingRight="25dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layoutDirection="ltr"
+            android:gravity="right"
+            >
+            <Spinner
+                android:id="@+id/Sp_city_Address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:backgroundTint="#000"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                />
+            <Spinner
+                android:id="@+id/Sp_Ostan_Address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#000"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/Edt_CodePosti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:hint="کد پستی"
+            android:textColor="#1A1919"
+            android:fontFamily="@font/iranian_sans"
+            android:paddingRight="25dp"
+            />
+        <EditText
+            android:id="@+id/Edt_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:hint="نشانی پستی"
+            android:textColor="#1A1919"
+            android:fontFamily="@font/iranian_sans"
+            android:paddingRight="25dp"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:layout_marginTop="40dp"
+            >
+
+            <Button
+                android:layout_gravity="bottom"
+                android:id="@+id/Btn_OkUserAddress"
+                android:fitsSystemWindows="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="ثبت اطلاعات"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="20dp"
+                android:gravity="center|center_vertical"
+                android:background="#34B62B"
+                android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+                android:drawableTint="#fff"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

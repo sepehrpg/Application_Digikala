@@ -8,23 +8,40 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.eksirsanat.ir.Action.Convert_PX_To_Dp;
+import com.eksirsanat.ir.Action.Get_Token;
+import com.eksirsanat.ir.Action.Request_Volley;
+import com.eksirsanat.ir.Config;
 import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
 import com.eksirsanat.ir.More_Product.Images.Slider_PageAdapter_Product;
+import com.eksirsanat.ir.Panel_User.Act_LoginActivity;
 import com.eksirsanat.ir.Property_Header.stickyheader.Act_Property_Header;
 import com.eksirsanat.ir.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
-public class More_Product extends AppCompatActivity {
+public class More_Product extends AppCompatActivity implements Config {
+
+
 
     Context context;
 
@@ -34,7 +51,7 @@ public class More_Product extends AppCompatActivity {
 
     LinearLayout lineTimer,linear_Indicator;
 
-    ImageView img_back,img_shop;
+    ImageView img_back,img_shop,img_fav;
 
     ViewPager viewPager;
 
@@ -47,6 +64,11 @@ public class More_Product extends AppCompatActivity {
 
     int check;
 
+
+    int ID_PRODUCT;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +77,13 @@ public class More_Product extends AppCompatActivity {
         CheckTimer();
         Getproduct();
         OnclickMethod();
+        Check_onCreate_Fav();
+        Add_Fav();
     }
 
     void CheckTimer(){
 
         String check=GetIntent.getStringExtra("offer");
-
         if (check!=null && check.equals("0")){
             lineTimer.setVisibility(View.GONE);
         }else {
@@ -82,6 +105,7 @@ public class More_Product extends AppCompatActivity {
         Tv_min=findViewById(R.id.Tv__min);
         Tv_hour=findViewById(R.id.Tv_hour);
         img_back=findViewById(R.id.Img_back_MoreProduct);
+        img_fav=findViewById(R.id.Img_Fav_MoreProduct);
 
         linear_Indicator=findViewById(R.id.Linear_Indicator_MoreProduct);
         toolbar=findViewById(R.id.Toolbar_MoreProduct);
@@ -90,9 +114,134 @@ public class More_Product extends AppCompatActivity {
         txt_tile_toolbar=findViewById(R.id.Tv_Toolbar_Title);
         Txt_property=findViewById(R.id.Txt_property);
 
+        ID_PRODUCT=Integer.parseInt(GetIntent.getStringExtra("idproduct"));
 
 
     }
+
+
+
+    void Add_Fav(){
+        img_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences sharedPreferences=getSharedPreferences("info",0);
+                String token=sharedPreferences.getString("token",null);
+                if (token==null){
+                    startActivity(new Intent(More_Product.this, Act_LoginActivity.class));
+
+                }else {
+                    String url=urlHome+"addfav.php?token="+Get_Token.getToken(More_Product.this)+"&idproduct="+ID_PRODUCT;
+                    Log.i("urlllllFav",url);
+                    JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                String check=response.getString("status");
+                                if (check.equals("ok")){
+                                    img_fav.setImageResource(R.drawable.ic_addfav);
+                                    Log.i("addFav","add");
+                                }
+                                else { //means: before exist
+
+                                    String url=urlHome+"delfav.php?token="+Get_Token.getToken(More_Product.this)+"&idproduct="+ID_PRODUCT;
+                                    JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            try {
+                                                String check=response.getString("status");
+                                                if (check.equals("ok")){
+                                                    img_fav.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                                                    Log.i("delFav","delete");
+
+                                                }
+                                                else {
+                                                    img_fav.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                                                    Log.i("ErrorFav2","error2");
+
+                                                }
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                                    //Volley.newRequestQueue(context).add(jsonObjectRequest);
+                                    Request_Volley.getInstance(context).add(jsonObjectRequest);
+                                }
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    Request_Volley.getInstance(context).add(jsonObjectRequest);
+
+                }
+            }
+        });
+    }
+
+
+    void Check_onCreate_Fav(){
+        SharedPreferences sharedPreferences=getSharedPreferences("info",0);
+        String token=sharedPreferences.getString("token",null);
+        if (token==null){
+
+        }
+        else {
+            String url=urlHome+"productA.php?idproduct="+ID_PRODUCT+"&token="+Get_Token.getToken(More_Product.this);
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonObject=response.getJSONObject("forUser");
+
+                        String checkFav=jsonObject.getString("fav");
+                        if (checkFav.equals("false")){
+                            img_fav.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                        }
+                        if (checkFav.equals("true")){
+                            img_fav.setImageResource(R.drawable.ic_addfav);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            //Volley.newRequestQueue(context).add(jsonObjectRequest);
+            Request_Volley.getInstance(context).add(jsonObjectRequest);
+        }
+    }
+
+
 
 
     void OnclickMethod(){
@@ -102,6 +251,7 @@ public class More_Product extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
 
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -113,9 +263,6 @@ public class More_Product extends AppCompatActivity {
                     toolbar.setBackgroundResource(R.color.ghemezkamrang);
                     img_shop.setImageResource(R.drawable.ic_store_white);
                     img_back.setImageResource(R.drawable.ic_back_right_white);
-
-
-
                 }
                 else {
                     toolbar.setBackgroundResource(R.color.sefid);
@@ -136,13 +283,8 @@ public class More_Product extends AppCompatActivity {
                     txt_tile_toolbar.setText("");
                     check=0;
                 }
-
-
-
-
             }
         });
-
 
         Txt_property.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +294,6 @@ public class More_Product extends AppCompatActivity {
 
                 Intent intent=new Intent(context, Act_Property_Header.class);
                 intent.putExtra("nameProduct",nameProduct);
-
                 startActivity(intent);
             }
         });
@@ -166,21 +307,14 @@ public class More_Product extends AppCompatActivity {
 
     //list-product-offer-And-timer............................................................................
     void getTimer(){
-
         Api_Timer.GetMethod_timer(context,Tv__sec,Tv_min,Tv_hour);
-
     }
 
 
     void  Getproduct(){
-
-        int idProduct=Integer.parseInt(GetIntent.getStringExtra("idproduct"));
-
-        Api_Product_MoreProduct.GetPost(context, idProduct, new Api_Product_MoreProduct.InterFace_Product() {
+        Api_Product_MoreProduct.GetPost(context, ID_PRODUCT, new Api_Product_MoreProduct.InterFace_Product() {
             @Override
             public void list(List<DataModer_Product_MoreProduct> data_modelproduct) {
-
-
                 for (int i=0; i<data_modelproduct.size() ;i++){
                     DataModer_Product_MoreProduct productData=data_modelproduct.get(i);
                     name_title=productData.getName();
@@ -193,10 +327,8 @@ public class More_Product extends AppCompatActivity {
             @Override
             public void listImage(List<String> Images) {
                 idView=new int[Images.size()];
-
                 Slider_PageAdapter_Product adapter=new Slider_PageAdapter_Product(context,Images);
                 viewPager.setAdapter(adapter);
-
                 SliderIndicator(Images.size());
 
             }
@@ -206,9 +338,7 @@ public class More_Product extends AppCompatActivity {
 
     void SliderIndicator(final int len){
 
-
         if (len!=0){
-
             LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(Convert_PX_To_Dp.convert_px(context,100),Convert_PX_To_Dp.convert_px(context,100)); //with this code we can set some attribute to one variable example View or imageView
             layoutParams.setMargins(0,0,Convert_PX_To_Dp.convert_px(context,35),0);
 

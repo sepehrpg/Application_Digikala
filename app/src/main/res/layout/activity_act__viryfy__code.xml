@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Panel_User.Act_Viryfy_Code">
 
@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp"
         android:gravity="center"
@@ -25,14 +25,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="#C9F3CB"
-            android:padding="15dp"
+            android:padding="20dp"
             >
             <TextView
                 android:id="@+id/Txt_show_InfoUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="کد تایید برای شماره 092132103 ارسال شد"
-                android:textSize="18sp"
+                tools:text="کد تایید برای شماره 092132103 ارسال شد"
+                android:textSize="15sp"
                 android:fontFamily="@font/iranian_sans"
 
                 />
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ویرایش ایمیل"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/iranian_sans"
                 android:layout_marginTop="15dp"
                 android:textColor="#013F8A"
@@ -146,7 +146,19 @@
             tools:textSize="18sp"
             android:textColor="#000"
             android:fontFamily="@font/iranian_sans"
+            />
 
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:id="@+id/progress_wheel_VerifyCode"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            wheel:matProg_barColor="#BB1313"
+            wheel:matProg_progressIndeterminate="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
             />
 
     </LinearLayout>

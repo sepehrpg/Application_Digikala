@@ -57,7 +57,6 @@ public class Act_Cat_Home extends AppCompatActivity {
         setContentView(R.layout.activity_act__cat__home);
         Cast();
         Header();
-
         GetList_CustomProduct_Porforosh();
         //SetUpExpandRecView();
     }
@@ -68,7 +67,6 @@ public class Act_Cat_Home extends AppCompatActivity {
 
         nameCat=getIntent().getStringExtra("nameCat");
         idCat=getIntent().getStringExtra("idCat");
-
 
         //title_tolbar.setText(nameCat);
         expandableList=findViewById(R.id.ExpandListView);

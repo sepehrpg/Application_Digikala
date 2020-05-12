@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.eksirsanat.ir.Panel_User.Api.Api_Panel;
 import com.eksirsanat.ir.R;
 import com.eksirsanat.ir.Search_Product.Act_Search_Product;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.Locale;
 import java.util.Timer;
@@ -27,15 +31,17 @@ public class Act_Viryfy_Code extends AppCompatActivity {
 
     EditText edt_get_Code,edt_Code;
 
-
-
     int[] arrayCode={R.id.Edt_Code1,R.id.Edt_Code2,R.id.Edt_Code3,R.id.Edt_Code4,R.id.Edt_Code5};
-
 
     Timer timer;
     long timerCount;
     int check;
 
+    ProgressWheel progressWheel;
+    String Username;
+    String code_send="";
+
+    Api_Panel api_panel;
 
 
 
@@ -44,6 +50,9 @@ public class Act_Viryfy_Code extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__viryfy__code);
         Cast();
+        EnterCode();
+        onClick();
+
     }
 
 
@@ -56,48 +65,11 @@ public class Act_Viryfy_Code extends AppCompatActivity {
         img_back=findViewById(R.id.Close_Main_Toolbar);
         img_search=findViewById(R.id.Img_search_Main_Toolbar);
         img_store=findViewById(R.id.Img_store_Main_toolbar);
-       /* code1=findViewById(R.id.Edt_Code1);
-        code2=findViewById(R.id.Edt_Code2);
-        code3=findViewById(R.id.Edt_Code3);
-        code4=findViewById(R.id.Edt_Code4);
-        code5=findViewById(R.id.Edt_Code5);*/
-
-        onClick();
-
-
-       for (int i=0;i<arrayCode.length;i++){
-
-           int j=i+1;
-          EditText editText1=findViewById(arrayCode[i]);
-           if (arrayCode.length-1!=i){
-
-               final EditText editText2=findViewById(arrayCode[j]);
-               editText1.addTextChangedListener(new TextWatcher() {
-                   @Override
-                   public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                   }
-
-                   @Override
-                   public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                   }
-
-                   @Override
-                   public void afterTextChanged(Editable s) {
-                       editText2.requestFocus();
-                   }
-               });
-
-
-           }
-       }
-        TimerMethod();
-
-
-
+        progressWheel=findViewById(R.id.progress_wheel_VerifyCode);
+        Username=getIntent().getStringExtra("username");
+        txt_infouser.setText(" کد تایید برای کاربر "+ Username + " ارسال شد ");
+        api_panel=new Api_Panel(this,progressWheel);
     }
-
 
     void onClick(){
 
@@ -124,6 +96,82 @@ public class Act_Viryfy_Code extends AppCompatActivity {
         });
 
     }
+
+    void EnterCode(){
+
+        for (int i=0;i<arrayCode.length;i++){
+
+            int j=i+1;
+            EditText editText1=findViewById(arrayCode[i]);
+            if (arrayCode.length-1!=i){
+
+                final EditText editText2=findViewById(arrayCode[j]);
+                editText1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        editText2.requestFocus();
+                    }
+                });
+
+
+            }
+        }
+
+
+        EditText edittext_4=findViewById(arrayCode[4]); //last code
+
+        edittext_4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                code_send="";
+                for (int i=0;i<arrayCode.length;i++){
+                    EditText editText=findViewById(arrayCode[i]);
+
+                    if (editText.getText().toString().trim().isEmpty()){
+                        Toast.makeText(Act_Viryfy_Code.this, "لطفا کد ارسالی را بررسی کنید", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        code_send+=editText.getText().toString().trim();
+                    }
+                }
+                //Log.i("code_send",code_send);
+                api_panel.Get_SendCode_Panel(Username,code_send,getIntent().getStringExtra("reg"));
+
+
+
+
+            }
+        });
+
+
+
+        TimerMethod();
+    }
+
+
+
+
+
+
 
 
 

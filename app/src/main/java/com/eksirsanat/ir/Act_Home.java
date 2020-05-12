@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.eksirsanat.ir.Action.Convert_PX_To_Dp;
+import com.eksirsanat.ir.Action.Get_Token;
 import com.eksirsanat.ir.Main_Home.Category_Main.Adapter_RecyclerView_Catagory_Home;
 import com.eksirsanat.ir.Main_Home.Category_Main.Api_Category_home;
 import com.eksirsanat.ir.Main_Home.Category_Main.Datamodel_Category_Home;
@@ -44,6 +46,7 @@ import com.eksirsanat.ir.Main_Home.Product.product_offer.Api_product_Offer;
 import com.eksirsanat.ir.Main_Home.Product.product_offer.Custom_Product_Offer;
 import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
 import com.eksirsanat.ir.Panel_User.Act_LoginActivity;
+import com.eksirsanat.ir.Search_Product.Act_Search_Product;
 import com.eksirsanat.ir.ViewPager_Tablayout_Category.Act_ViewPager_Category;
 import com.google.android.material.navigation.NavigationView;
 
@@ -94,7 +97,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
 
 
-    ImageView img_search,img_store,img_search_back,menu;
+
+    ImageView img_search,img_store,img_search_back,menu,img_profile;
     EditText edt_search;
 
 
@@ -120,6 +124,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
         Tv__sec=findViewById(R.id.Tv__sec);
         Tv_min=findViewById(R.id.Tv__min);
         Tv_hour=findViewById(R.id.Tv_hour);
+        img_profile=findViewById(R.id.Profile);
+        img_search=findViewById(R.id.Img_search);
         lineTimer=findViewById(R.id.LinearTimer);
         LinearIndicator=findViewById(R.id.LinearIndicator);
         drwLayout=findViewById(R.id.drwLayout);
@@ -127,6 +133,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
         Navi=findViewById(R.id.Navi_Menu);
         Navigation_Method();
         Header();
+        onClick();
 
         iransans=Typeface.createFromAsset(getAssets(),"font/iranian_sans.ttf");
         iransansBold=Typeface.createFromAsset(getAssets(),"font/iranian_sans_bold.ttf");
@@ -143,10 +150,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
     void Header(){
         img_search=findViewById(R.id.Img_search);
         img_store=findViewById(R.id.Img_store_main);
-
         edt_search=findViewById(R.id.Edt_search);
         img_search_back=findViewById(R.id.Img_search_back);
-
     }
 
 
@@ -180,10 +185,13 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
                 if (id==R.id.product_new){
                 }
                 if (id==R.id.settings){
+
+
                 }
                 if (id==R.id.question){
                 }
                 if (id==R.id.about){
+
                     startActivity(new Intent(Act_Home.this,Act_About_Company.class));
                 }
 
@@ -196,19 +204,59 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
         View view=Navi.getHeaderView(0);
         TextView dg=view.findViewById(R.id.LoginAndRegister);
+        TextView NameUser=view.findViewById(R.id.NameUser);
 
         dg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Act_Home.this, Act_LoginActivity.class));
-
             }
         });
 
+        String Token=Get_Token.getToken(Act_Home.this);
+        if (Token!=null){
+            NameUser.setVisibility(View.VISIBLE);
+            dg.setVisibility(View.GONE);
+            SharedPreferences sharedPreferences=getSharedPreferences("NameUser", Context.MODE_PRIVATE);
+            String txt=sharedPreferences.getString("nameUser",null) ;
+            if (txt==null){
+                NameUser.setText("ورود به پنل");
+            }else {
+                NameUser.setText(txt);
+            }
+            NameUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Act_Home.this, Act_LoginActivity.class));
+                }
+            });
+        }
+        else {
+            SharedPreferences sharedPreferences=getSharedPreferences("NameUser", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
 
+            NameUser.setVisibility(View.GONE);
+            dg.setVisibility(View.VISIBLE);
+        }
+    }
 
+    void onClick(){
 
+        img_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Act_Home.this, Act_Search_Product.class));
+            }
+        });
 
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Act_Home.this, Act_LoginActivity.class));
+            }
+        });
 
     }
 
@@ -457,7 +505,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
         adapterRecyclerViewCatagoryHome=new Adapter_RecyclerView_Catagory_Home(Act_Home.this,list);
         Rec_Btn_category_home.setAdapter(adapterRecyclerViewCatagoryHome);
-        Log.i("cat","ok");
+
     }
 
     @Override

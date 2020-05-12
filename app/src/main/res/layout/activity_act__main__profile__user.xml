@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    tools:context=".Panel_User.Panel.Act_Main_Profile_User">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layoutDirection="rtl"
+        android:background="@color/ghemezkamrang">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="left|center_vertical"
+            >
+
+            <ImageView
+                android:id="@+id/Close_Main_Toolbar"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:src="@drawable/ic_back_right_white"
+                />
+
+            <TextView
+                android:id="@+id/Title_Custom_Toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                tools:text="پروفایل"
+                android:gravity="right|center_vertical"
+                android:textSize="18dp"
+                android:paddingRight="10dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/tosi"
+        android:padding="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نام کاربری :"
+            android:textSize="17sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/iranian_sans"
+            />
+        <TextView
+            android:id="@+id/Username_Userinfo"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="sepehrfz77@gmail.com"
+            android:textSize="17sp"
+            android:fontFamily="@font/iranian_sans"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Rec_UserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

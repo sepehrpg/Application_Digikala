@@ -43,6 +43,7 @@ public class Api_product implements Config {
                         datamodelListProduct.setPrice_sale(jsonObject.getString("price_sale"));
                         datamodelListProduct.setName(jsonObject.getString("name"));
                         datamodelListProduct.setPic(jsonObject.getString("pic"));
+                        datamodelListProduct.setIdcat(jsonObject.getString("idcat"));
 
                         list.add(datamodelListProduct);
 

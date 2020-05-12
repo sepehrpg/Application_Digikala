@@ -30,4 +30,8 @@
 
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:layoutDirection">rtl</item>
+    </style>
+
 </resources>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content"
+    >
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layoutDirection="rtl"
+        android:layout_margin="3dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#eeeeee"
+            >
+            <TextView
+                android:id="@+id/Txt_NameAddressList"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="نام و نام خانوادگی"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                />
+
+            <TextView
+                android:id="@+id/Txt_SelectAddressList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="انتخاب آدرس"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginLeft="5dp"
+                />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="کد پستی :"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/Txt_cityAddressList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01232183971"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="شماره ثابت :"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/Txt_PhoneAddressList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="02634325987"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="شماره همراه :"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/Txt_MobilAddressList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09377945956"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:fontFamily="@font/iranian_sans"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نشانی :"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:fontFamily="@font/iranian_sans"
+            android:background="#eeeeee"
+            />
+        <TextView
+            android:id="@+id/Txt_AddressMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:fontFamily="@font/iranian_sans"
+            android:text="باغستان غربی شبنم 9 ساختمان میلاد یک واحد 3"
+            android:background="#eeeeee"
+            />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp" />
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+</LinearLayout>

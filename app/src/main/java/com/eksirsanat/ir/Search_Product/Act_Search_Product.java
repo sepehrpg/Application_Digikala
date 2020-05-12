@@ -63,18 +63,15 @@ public class Act_Search_Product extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                //Log.i("start",start+"");
-                //Log.i("count",count+"");
-                //Log.i("after",after+"");
 
              if (after>=1){
                     microphone.setVisibility(View.GONE);
-                    barcode.setVisibility(View.GONE);
+                   // barcode.setVisibility(View.GONE);
                     candel.setVisibility(View.VISIBLE);
                 }
                 else {
                     microphone.setVisibility(View.VISIBLE);
-                    barcode.setVisibility(View.VISIBLE);
+                   // barcode.setVisibility(View.VISIBLE);
                     candel.setVisibility(View.GONE);
                 }
 
@@ -82,8 +79,6 @@ public class Act_Search_Product extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
 
             }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@drawable/shape_bk99_4"
@@ -35,7 +36,23 @@
         android:layout_marginBottom="15dp"
         android:layout_marginRight="5dp"
 
-
+        />
+    <TextView
+        android:id="@+id/NameUser"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="@font/iranian_sans"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/LoginAndRegister"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_login"
+        android:padding="5px"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:visibility="gone"
         />
 
 </RelativeLayout>

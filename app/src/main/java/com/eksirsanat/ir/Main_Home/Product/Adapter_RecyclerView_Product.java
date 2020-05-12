@@ -59,8 +59,6 @@ public class Adapter_RecyclerView_Product extends RecyclerView.Adapter<Adapter_R
             }
         });
 
-        //Log.i("Tv_price",datamodelListProduct.getPrice_sale());
-        //Log.i("Tv_title",datamodelListProduct.getName());
 
     }
 
@@ -73,7 +71,6 @@ public class Adapter_RecyclerView_Product extends RecyclerView.Adapter<Adapter_R
 
         ImageView imaage_post;
         TextView Tv_title,Tv_price;
-
         CardView CardViewProduct;
 
 

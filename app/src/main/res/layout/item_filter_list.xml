@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#000"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Txt_NameFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:text="قیمت"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginLeft="7dp"
+        android:background="#000"
+        android:textColor="#E2E1E1"
+        android:fontFamily="@font/iranian_sans"
+        android:textSize="15dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="00.1dp"
+        android:background="#EEDFDEDE"
+        android:layout_marginRight="7dp"
+        android:layout_marginLeft="7dp"
+        />
+
+</LinearLayout>

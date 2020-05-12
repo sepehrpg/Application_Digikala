@@ -1,0 +1,85 @@
+package com.eksirsanat.ir.Main_Home.Product.Filters_Product;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.eksirsanat.ir.R;
+
+import java.util.List;
+
+public class Adapter_Filters extends RecyclerView.Adapter<Adapter_Filters._Holder> {
+    Context context;
+    List<Filters_DataModel> List;
+    public Adapter_Filters(Context context, List<Filters_DataModel> List){
+
+        this.context=context;
+        this.List=List;
+
+    }
+
+
+    @NonNull
+    @Override
+    public _Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_filter_list,null,false);
+        return new _Holder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull final _Holder holder, final int position) {
+        Filters_DataModel filters=List.get(position);
+        holder.nameFilter.setText(filters.getName());
+
+        SharedPreferences sharedPreferences=context.getSharedPreferences("PositionFilter",0);
+        if (position==sharedPreferences.getInt("pos",-10)){
+            holder.nameFilter.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.nameFilter.setTextColor(context.getResources().getColor(R.color.meshkii));
+        }
+        else {
+            holder.nameFilter.setBackgroundColor(context.getResources().getColor(R.color.black));
+            holder.nameFilter.setTextColor(context.getResources().getColor(R.color.white));
+
+        }
+
+
+        holder.nameFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.nameFilter.setBackgroundColor(context.getResources().getColor(R.color.white));
+                holder.nameFilter.setTextColor(context.getResources().getColor(R.color.meshkii));
+                SharedPreferences sharedPreferences=context.getSharedPreferences("PositionFilter",0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putInt("pos",position);
+                editor.apply();
+                notifyDataSetChanged();
+
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return List.size();
+    }
+
+    public  class _Holder extends RecyclerView.ViewHolder {
+
+        TextView nameFilter;
+
+        public _Holder(@NonNull View itemView) {
+            super(itemView);
+            nameFilter=itemView.findViewById(R.id.Txt_NameFilter);
+        }
+    }
+
+}
