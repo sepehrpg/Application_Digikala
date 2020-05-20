@@ -22,9 +22,9 @@
             android:id="@+id/Img_Category"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@mipmap/logo_splash"
+            android:src="@drawable/loading"
             android:scaleType="centerCrop"
-                android:layout_marginLeft="5dp"
+            android:layout_marginLeft="5dp"
             />
 
             <TextView

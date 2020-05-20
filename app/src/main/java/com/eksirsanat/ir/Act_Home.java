@@ -39,6 +39,7 @@ import com.eksirsanat.ir.Main_Home.Pack_Slider.Slider_PageAdapter;
 import com.eksirsanat.ir.Main_Home.Pack_Span_Count.Adapter_RecyclerView_SpanCount_Home;
 import com.eksirsanat.ir.Main_Home.Pack_Span_Count.Api_SpanCount;
 import com.eksirsanat.ir.Main_Home.Pack_Span_Count.Datamodel_SpanCount;
+import com.eksirsanat.ir.Main_Home.Product.Act_SeeAll_For_newAndPrice;
 import com.eksirsanat.ir.Main_Home.Product.Api_product;
 import com.eksirsanat.ir.Main_Home.Product.Custom_Product;
 import com.eksirsanat.ir.Main_Home.Product.Datamodel_ListProduct;
@@ -178,11 +179,20 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
                 if (id==R.id.buy){
                 }
                 if (id==R.id.product_sale){
+
+                    Intent intent=new Intent(Act_Home.this, Act_SeeAll_For_newAndPrice.class);
+                    intent.putExtra("nameCat","product-sale");
+                    startActivity(intent);
+
                 }
                 if (id==R.id.product_show){
                 }
 
                 if (id==R.id.product_new){
+                    Intent intent=new Intent(Act_Home.this, Act_SeeAll_For_newAndPrice.class);
+                    intent.putExtra("nameCat","product-new");
+                    startActivity(intent);
+
                 }
                 if (id==R.id.settings){
 
@@ -617,8 +627,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProduct=findViewById(R.id.custom_Product_porforosh);
 
-                customProduct.ViewAndCast();
-                customProduct.getList(listProductList);
+                customProduct.ViewAndCast("product-sale");
+                customProduct.getList(listProductList,1);
                 customProduct.setTitle("محصولات پر فروش");
 
             }
@@ -633,8 +643,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProductNew=findViewById(R.id.custom_Product_new);
 
-                customProductNew.ViewAndCast();
-                customProductNew.getList(listProductList);
+                customProductNew.ViewAndCast("product-new");
+                customProductNew.getList(listProductList,1);
                 customProductNew.setTitle("جدید ترین محصولات");
             }
         });

@@ -24,17 +24,26 @@ public class Adapter_RecyclerView_Product extends RecyclerView.Adapter<Adapter_R
 
     Context context;
     List<Datamodel_ListProduct> datamodel_listProducts;
+    int order;
 
-    public Adapter_RecyclerView_Product(Context context,List<Datamodel_ListProduct> datamodel_listProducts){
+    public Adapter_RecyclerView_Product(Context context,List<Datamodel_ListProduct> datamodel_listProducts,int order){
         this.context=context;
         this.datamodel_listProducts=datamodel_listProducts;
+        this.order=order;
     }
 
     @NonNull
     @Override
     public _Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        Log.i("Order",order+"");
+        if (order==2){
+             view= LayoutInflater.from(context).inflate(R.layout.item_listnewandprice_vertical,parent,false);
+        }
+        else {
+             view= LayoutInflater.from(context).inflate(R.layout.items_product,parent,false);
+        }
 
-        View view= LayoutInflater.from(context).inflate(R.layout.items_product,parent,false);
         return new _Holder(view);
 
     }
@@ -44,7 +53,6 @@ public class Adapter_RecyclerView_Product extends RecyclerView.Adapter<Adapter_R
 
         final Datamodel_ListProduct datamodelListProduct=datamodel_listProducts.get(position);
         Glide.with(context).load(datamodelListProduct.getPic()).into(holder.imaage_post);
-
         holder.Tv_price.setText(FormatNumber_Decimal.GetFormatInteger(datamodelListProduct.getPrice_sale())+"تومان");
         holder.Tv_title.setText(datamodelListProduct.getName());
 

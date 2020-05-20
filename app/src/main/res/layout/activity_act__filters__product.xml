@@ -127,18 +127,18 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
+                        android:id="@+id/Filter_Line_Pro"
                         >
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="پاک کردن"
+                            android:layout_height="match_parent"
+                            android:drawableRight="@drawable/ic_format_clear_black_24dp"
                             android:fontFamily="@font/iranian_sans"
                             android:gravity="center"
-                            android:textSize="13dp"
-                            android:drawableRight="@drawable/ic_format_clear_black_24dp"
+                            android:text="پاک کردن"
                             android:textColor="#EE2B2A2A"
-                            />
+                            android:textSize="13dp" />
                     </LinearLayout>
                     <View
                         android:layout_width="0.5dp"

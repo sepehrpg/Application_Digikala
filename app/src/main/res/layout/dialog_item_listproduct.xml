@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="2dp"
+        >
+        <RadioGroup
+            android:id="@+id/RG_Dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            >
+            <RadioButton
+                android:id="@+id/r1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="پر بازدید ترین "
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="5dp"
+                />
+
+            <RadioButton
+                android:id="@+id/r2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="پر فروش ترین "
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="5dp"
+
+
+                />
+
+            <RadioButton
+                android:id="@+id/r3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="قیمت از زیاد به کم "
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="5dp"
+
+
+                />
+            <RadioButton
+                android:id="@+id/r4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="قیمت از کم به زیاد"
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="5dp"
+
+                />
+
+
+            <RadioButton
+                android:id="@+id/r6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="جدید ترین ها"
+                android:fontFamily="@font/iranian_sans"
+                android:layout_marginTop="5dp"
+
+
+                />
+
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

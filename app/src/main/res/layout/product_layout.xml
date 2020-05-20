@@ -19,12 +19,11 @@
         android:id="@+id/Tv_product_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="مشاهده همه"
+        tools:text="مشاهده همه"
         android:padding="8dp"
         android:layout_alignParentLeft="true"
         android:textColor="#2196F3"
         android:fontFamily="@font/iranian_sans"
-
         />
 
     <androidx.recyclerview.widget.RecyclerView

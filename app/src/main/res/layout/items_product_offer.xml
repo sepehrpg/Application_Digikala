@@ -20,7 +20,7 @@
             android:layout_width="150dp"
             android:layout_height="130dp"
             android:padding="15dp"
-            tools:src="@drawable/slider1"
+            android:src="@drawable/loading"
             />
 
         <TextView
@@ -32,7 +32,8 @@
             android:textAlignment="center"
             tools:text="ایفون X"
             android:fontFamily="@font/iranian_sans"
-
+            android:lines="1"
+            android:ellipsize="end"
             />
         <View
             android:id="@+id/viewProduct"
@@ -53,7 +54,8 @@
             android:textColor="#C00404"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/iranian_sans"
-
+            android:lines="1"
+            android:ellipsize="end"
             />
 
         <TextView

@@ -1,6 +1,7 @@
 package com.eksirsanat.ir.Main_Home.Product.Filters_Product;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -25,12 +26,14 @@ public class Api_Filters implements Config {
 
         final List<Filters_DataModel> list=new ArrayList<>();
 
-        String url=urlHome+"list-productA.php?idcat="+idCat;
+        String url=urlHome+"list-productA.php?idcat="+idCat+"&limit=100";
+        Log.i("URL",url);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
+
                     JSONArray jsonArray=response.getJSONArray("filters");
 
                     for (int i=0;i<jsonArray.length();i++){
@@ -40,6 +43,7 @@ public class Api_Filters implements Config {
                         filters.setName(js.getString("namePe"));
                         filters.setNameEn(js.getString("nameEn"));
                         list.add(filters);
+
 
                     }
                     listProduct.ListFilter(list);

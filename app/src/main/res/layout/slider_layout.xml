@@ -6,7 +6,7 @@
     android:layout_height="220dp"
     android:id="@+id/Img_Slider_Home"
     android:scaleType="fitXY"
-
+    android:src="@drawable/loading"
     >
 
 

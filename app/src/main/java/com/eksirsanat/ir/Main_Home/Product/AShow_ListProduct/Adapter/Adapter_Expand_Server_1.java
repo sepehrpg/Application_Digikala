@@ -1,4 +1,4 @@
-package com.eksirsanat.ir.ViewPager_Tablayout_Category.More_Category;
+package com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 
 import com.eksirsanat.ir.R;
+import com.eksirsanat.ir.ViewPager_Tablayout_Category.More_Category.HeadModel_Server;
+import com.eksirsanat.ir.ViewPager_Tablayout_Category.More_Category.ItemModel_Server;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +44,6 @@ public class Adapter_Expand_Server_1 extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
 
-
         HeadModel_Server headModel_server=Header.get(groupPosition);
         int size=ListItems.get(headModel_server.getName()).size();
 
@@ -57,8 +58,9 @@ public class Adapter_Expand_Server_1 extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
+        return ListItems.get(Header.get(groupPosition).getName()).get(childPosition);
+        //return ListItems.get(Header.get(groupPosition));
 
-        return ListItems.get(Header.get(groupPosition).getName());
     }
 
     @Override
@@ -80,10 +82,7 @@ public class Adapter_Expand_Server_1 extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
-
-
         HeadModel_Server headModel_server=Header.get(groupPosition);
-
         String headerTitle = headModel_server.getName();
 
 
@@ -112,8 +111,6 @@ public class Adapter_Expand_Server_1 extends BaseExpandableListAdapter {
         String childText=ListItems.get(Header.get(groupPosition).getName()).get(childPosition).getName();
 
 
-
-
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -131,6 +128,6 @@ public class Adapter_Expand_Server_1 extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true; //very import
     }
 }

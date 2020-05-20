@@ -31,7 +31,6 @@ public class Act_About_Company extends AppCompatActivity {
         VersionName=findViewById(R.id.VersionName);
         back_about=findViewById(R.id.back_about);
 
-
         back_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +69,6 @@ public class Act_About_Company extends AppCompatActivity {
 
 
     public void Btn_Call(View V){
-
         String phone="09377945956";
         Intent intent=new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",phone,null));
         startActivity(intent);

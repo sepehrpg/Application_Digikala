@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="220dp"
     android:id="@+id/Img_Slider_Home"
+    android:src="@drawable/loading"
     >
 
 

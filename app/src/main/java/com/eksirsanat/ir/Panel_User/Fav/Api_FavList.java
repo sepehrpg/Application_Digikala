@@ -28,7 +28,8 @@ public class Api_FavList implements Config {
         final List<FavList_Datamodel> products=new ArrayList<>();
 
         String url=urlHome+"listfav.php?token="+Get_Token.getToken(context);
-        Log.i("urlFAAVLIST",url);
+
+
 
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -43,9 +44,8 @@ public class Api_FavList implements Config {
 
                         JSONObject js=jsonArray.getJSONObject(i);
                         FavList_Datamodel favList_datamodel=new FavList_Datamodel();
-                        Log.i("SSFFf",js.getString("name"));
-                        Log.i("XXXXX",js+"");
 
+                        Log.i("FAvURl",js.getString("name"));
                         favList_datamodel.setName(js.getString("name"));
                         favList_datamodel.setNameEn(js.getString("nameEn"));
                         favList_datamodel.setIdbrand(js.getString("idbrand"));

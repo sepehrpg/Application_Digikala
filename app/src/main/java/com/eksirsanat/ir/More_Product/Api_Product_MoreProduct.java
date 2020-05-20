@@ -36,15 +36,19 @@ public class Api_Product_MoreProduct implements Config {
                     JSONObject jsonObject=response.getJSONObject("info");
                     DataModer_Product_MoreProduct modelProduct=new DataModer_Product_MoreProduct();
 
+                    if (!jsonObject.isNull("pic")){
+                        modelProduct.setPic(jsonObject.getString("pic"));
+                    }
+                    if (!jsonObject.isNull("des")){
+                        modelProduct.setDes(jsonObject.getString("des"));
+                    }
                     modelProduct.setIdproduct(jsonObject.getString("id"));
                     modelProduct.setName(jsonObject.getString("name"));
                     modelProduct.setNameEn(jsonObject.getString("nameEn"));
                     modelProduct.setIdbrand(jsonObject.getString("idbrand"));
                     modelProduct.setColors(jsonObject.getString("colors"));
                     modelProduct.setStatus(jsonObject.getString("status"));
-                    modelProduct.setDes(jsonObject.getString("des"));
                     modelProduct.setSum(jsonObject.getString("sum"));
-                    modelProduct.setPic(jsonObject.getString("pic"));
                     modelProduct.setIdcat(jsonObject.getString("idcat"));
                     modelProduct.setWeight(jsonObject.getString("weight"));
 
@@ -57,7 +61,9 @@ public class Api_Product_MoreProduct implements Config {
                     for ( int i=0; i<jsonArray.length();i++){
 
                         JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                        ListImages.add(jsonObject1.getString("url"));
+                        if (!jsonObject1.isNull("url")){
+                            ListImages.add(jsonObject1.getString("url"));
+                        }
                     }
                     listimage.listImage(ListImages);
 

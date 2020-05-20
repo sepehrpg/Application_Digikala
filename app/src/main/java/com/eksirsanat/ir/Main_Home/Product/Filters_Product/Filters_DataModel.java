@@ -4,7 +4,15 @@ public class Filters_DataModel {
 
     String nameEn;
     String name;
+    String posision;
 
+    public String getPosision() {
+        return posision;
+    }
+
+    public void setPosision(String posision) {
+        this.posision = posision;
+    }
 
     public String getNameEn() {
         return nameEn;

@@ -65,7 +65,6 @@ public class Api_Category_home implements Config {  //get data from api category
     public interface Get_category{
 
         void getcategory(List<Datamodel_Category_Home> list);
-
         void Error(String s);
 
     }

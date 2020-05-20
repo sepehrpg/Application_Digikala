@@ -3,7 +3,7 @@
     android:id="@+id/Img_Span_Count"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:src="@drawable/ic_launcher_foreground"
+    android:src="@drawable/loading"
     android:layout_height="170dp"
     android:scaleType="fitXY"
     android:layout_margin="4dp"

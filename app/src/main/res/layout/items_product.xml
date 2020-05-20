@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -8,7 +9,6 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="2dp"
     android:foreground="?attr/selectableItemBackgroundBorderless"
-
     android:id="@+id/CardViewProduct"
     >
 
@@ -22,7 +22,7 @@
             android:layout_width="150dp"
             android:layout_height="130dp"
             android:padding="15dp"
-            tools:src="@drawable/slider1"
+            android:src="@drawable/loading"
             />
 
         <TextView
@@ -33,7 +33,8 @@
             android:textAlignment="center"
             tools:text="ایفون X"
             android:fontFamily="@font/iranian_sans"
-
+            android:lines="1"
+            android:ellipsize="end"
             />
         <View
             android:id="@+id/viewProduct"
@@ -48,14 +49,14 @@
             android:id="@+id/Tv_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/viewProduct"
-            android:textAlignment="center"
-            tools:text="200000000"
-            android:textColor="#069c27"
-            android:layout_marginTop="6dp"
+            android:layout_below="@+id/Tv_title2"
+            android:layout_marginTop="14dp"
+            android:ellipsize="end"
             android:fontFamily="@font/iranian_sans"
-
-            />
+            android:lines="1"
+            android:textAlignment="center"
+            android:textColor="#069c27"
+            tools:text="200000000" />
 
     </RelativeLayout>
 

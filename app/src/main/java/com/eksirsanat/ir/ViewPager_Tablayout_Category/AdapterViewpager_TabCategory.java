@@ -65,6 +65,7 @@ public class AdapterViewpager_TabCategory extends PagerAdapter { //use for image
                 recyclerView=view.findViewById(R.id.RecView_Category_Tablayout);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                 adapter=new RecyclerView_ViewPager_Category_Tav(context,list);
+
                 recyclerView.setRotationY(180); //for rtl viewpager
                 recyclerView.setAdapter(adapter);
             }

@@ -23,7 +23,7 @@
                     android:id="@+id/Img_FavList"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/loading"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="12dp"
                     />
@@ -38,6 +38,7 @@
                 >
 
                 <TextView
+                    android:layout_marginTop="15dp"
                     android:id="@+id/Txt_Header_FavList"
                     android:fontFamily="@font/iranian_sans"
                     android:layout_width="match_parent"
@@ -45,9 +46,9 @@
                     tools:text="پودر ماشین لباس شویی اکتیو"
                     android:textSize="14dp"
                     android:gravity="right|center_vertical"
-                    android:lines="2"
                     android:textColor="#000"
                     android:ellipsize="end"
+                    android:lines="1"
                     />
 
                 <TextView
@@ -59,9 +60,9 @@
                     tools:text="پودر ماشین لباس شویی اکتیو حاوی آنزیم های بالا و زیاد مناسب شتست و شو "
                     android:textSize="13dp"
                     android:gravity="right|center_vertical"
-                    android:ellipsize="end"
-                    android:lines="3"
                     android:layout_below="@+id/Txt_Header_FavList"
+                    android:lines="2"
+                    android:ellipsize="end"
                     />
 
 

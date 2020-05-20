@@ -265,7 +265,7 @@ public class More_Product extends AppCompatActivity implements Config {
                     img_back.setImageResource(R.drawable.ic_back_right_white);
                 }
                 else {
-                    toolbar.setBackgroundResource(R.color.sefid);
+                    toolbar.setBackgroundResource(R.color.sefidd);
                     img_shop.setImageResource(R.drawable.ic_store_black);
                     img_back.setImageResource(R.drawable.ic_back_right_black);
                 }
@@ -294,6 +294,8 @@ public class More_Product extends AppCompatActivity implements Config {
 
                 Intent intent=new Intent(context, Act_Property_Header.class);
                 intent.putExtra("nameProduct",nameProduct);
+                String idpro=String.valueOf(ID_PRODUCT);
+                intent.putExtra("idproduct",idpro);
                 startActivity(intent);
             }
         });
@@ -326,10 +328,14 @@ public class More_Product extends AppCompatActivity implements Config {
         }, new Api_Product_MoreProduct.InterFace_Image() {
             @Override
             public void listImage(List<String> Images) {
-                idView=new int[Images.size()];
-                Slider_PageAdapter_Product adapter=new Slider_PageAdapter_Product(context,Images);
-                viewPager.setAdapter(adapter);
-                SliderIndicator(Images.size());
+
+                if (!Images.isEmpty()){
+                    idView=new int[Images.size()];
+                    Slider_PageAdapter_Product adapter=new Slider_PageAdapter_Product(context,Images);
+                    viewPager.setAdapter(adapter);
+                    SliderIndicator(Images.size());
+                }
+
 
             }
         });

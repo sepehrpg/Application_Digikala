@@ -5,6 +5,15 @@ public class ItemModel_Server {
     String name;
     String id;
     String nameEn;
+    String sub;
+
+    public String getSub() {
+        return sub;
+    }
+
+    public void setSub(String sub) {
+        this.sub = sub;
+    }
 
     public String getName() {
         return name;

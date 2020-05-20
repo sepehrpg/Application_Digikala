@@ -29,9 +29,6 @@ public class Slider_PageAdapter extends PagerAdapter { //use for image and diffe
         this.strings=strings;
         this.idView=idView;
         this.activity=activity;
-
-
-
     }
 
 
@@ -61,26 +58,6 @@ public class Slider_PageAdapter extends PagerAdapter { //use for image and diffe
                         .placeholder(R.mipmap.logo_sp)
                         .error(R.drawable.ic_launcher_background))
                         .into(image_slider);
-/*
-        Log.i("pager",position+"");
-
-
-        for (int i=0; i<idView.length ;i++){ //this code for indicator and when user change pager indicator change too
-            View viewSlider=(activity).findViewById(idView[i]); //((Activity)context).= because can cast or findbyid idView
-            if (viewSlider!=null){
-                Log.i("posi",idView[i]+"");
-                if (i==position){
-                    viewSlider.setBackgroundResource(R.drawable.shape_slider_indicator_active);
-                }
-                else {
-                    viewSlider.setBackgroundResource(R.drawable.shape_slider_indicator_noactive);
-                }
-            }
-
-        }*/
-
-
-
         container.addView(view); //very very import // put all view
 
         return view; //this return view but container exist in this view too

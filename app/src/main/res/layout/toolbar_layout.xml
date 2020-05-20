@@ -40,13 +40,12 @@
 
         <ImageView
             android:id="@+id/Img_search_Main_Toolbar"
-            android:layout_width="27dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:src="@drawable/ic_search_black_24dp"
-            android:tint="#fff"
-            android:layout_marginRight="9dp"
             android:layout_marginLeft="9dp"
-            />
+            android:layout_marginRight="9dp"
+            android:src="@drawable/ic_search_black_24dp"
+            android:tint="#fff" />
 
         <ImageView
             android:id="@+id/Img_store_Main_toolbar"

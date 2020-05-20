@@ -11,18 +11,11 @@
     android:layout_height="match_parent"
     android:id="@+id/drwLayout"
     >
+    <include
+        layout="@layout/toolbar_layout"
+        />
 
-    <!--<ExpandableListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ExpandListView"
-        android:layout_margin="20dp"
-        android:background="#fff"
 
-        android:backgroundTint="#fff"
-        >
-
-    </ExpandableListView>-->
 
 
     <androidx.core.widget.NestedScrollView
@@ -40,73 +33,47 @@
             android:layout_height="match_parent"
             >
 
-            <androidx.appcompat.widget.Toolbar
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/ghemezkamrang"
+                android:id="@+id/Titile_Category"
+                android:text="دستع بندی ها"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                />
 
+
+
+            <ExpandableListView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/Expand_ActHomeCat2"
+                android:layout_margin="20dp"
+                android:background="#fff"
+                android:layoutDirection="ltr"
+                android:backgroundTint="#fff"
+                android:groupIndicator="@drawable/indicator_expan"
+                android:animateLayoutChanges="true"
+                android:scrollbars="vertical"
+                android:nestedScrollingEnabled="true"
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="left"
-                    >
+            </ExpandableListView>
 
-                    <ImageView
-                        android:id="@+id/menu"
-                        android:layout_width="27dp"
-                        android:layout_height="27dp"
-                        android:src="@drawable/ic_menu_black_24dp"
-                        android:tint="#fff"
-                        android:layout_marginRight="9dp"
-                        android:layout_marginLeft="9dp"
-                        android:layout_gravity="right"
-                        />
+            <com.eksirsanat.ir.ViewPager_Tablayout_Category.More_Category.Custom_Product_ViewPager
+                android:layoutDirection="rtl"
+                android:id="@+id/custom_MainProduct"
+                android:layout_width="match_parent"
+                android:layout_marginTop="9dp"
+                android:layout_height="wrap_content"
+                >
 
-                    <TextView
-                        android:id="@+id/Titile_Tolbar_Cat"
-                        android:layout_width="0dp"
-                        android:textColor="#fff"
-                        android:fontFamily="@font/iranian_sans"
-                        android:textSize="14dp"
-                        tools:text="mobile"
-                        android:gravity="right|center_vertical"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textStyle="bold"
-                        />
-
-                    <ImageView
-                        android:id="@+id/Img_search"
-                        android:layout_width="27dp"
-                        android:layout_height="27dp"
-                        android:src="@drawable/ic_search_black_24dp"
-                        android:tint="#fff"
-                        android:layout_marginRight="9dp"
-                        android:layout_marginLeft="9dp"
-                        />
-
-                    <ImageView
-                        android:id="@+id/Img_store_main"
-                        android:layout_width="27dp"
-                        android:layout_height="27dp"
-                        android:src="@drawable/ic_store_black_24dp"
-                        android:tint="#fff"
-                        android:layout_marginLeft="12dp"
-                        />
-
-
-                </LinearLayout>
-
-            </androidx.appcompat.widget.Toolbar>
-
-
-
-
-
+            </com.eksirsanat.ir.ViewPager_Tablayout_Category.More_Category.Custom_Product_ViewPager>
 
 
 
@@ -134,56 +101,10 @@
             </com.eksirsanat.ir.Main_Home.Product.Custom_Product>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/Titile_Category"
-                android:text="دستع بندی ها"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/iranian_sans"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                />
-
-
-
-            <ExpandableListView
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:id="@+id/ExpandListView"
-                android:layout_margin="20dp"
-                android:background="#fff"
-                android:layoutDirection="rtl"
-                android:backgroundTint="#fff"
-                >
-
-            </ExpandableListView>
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/Navi_Menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"
-        android:background="#fff"
-        android:backgroundTint="#fff"
-        app:itemIconTint="#160F0F"
-        app:itemTextColor="#0F0E0E"
-        android:fitsSystemWindows="true"
-        android:theme="@style/NavigationView"
-        app:itemBackground="@drawable/shape_color_navigation_item"
-        >
-
-    </com.google.android.material.navigation.NavigationView>
-
-
 
 
 

@@ -69,8 +69,6 @@ public class Act_FavList extends AppCompatActivity implements Config {
             @Override
             public void FavList(List<FavList_Datamodel> products) {
 
-
-
                 Collections.reverse(products);
                 adapter=new Adapter_FavList(Act_FavList.this,products,clickListener);
                 RecyclerView.LayoutManager manager=new GridLayoutManager(Act_FavList.this,1);

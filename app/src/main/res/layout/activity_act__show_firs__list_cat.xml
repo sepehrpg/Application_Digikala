@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    tools:context=".Main_Home.Product.AShow_ListProduct.Act_ShowFirs_ListCat">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Titile_Category"
+        android:text="دستع بندی ها"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/iranian_sans"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
+
+
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Expand_ActHomeCat"
+        android:layout_margin="20dp"
+        android:background="#fff"
+        android:layoutDirection="ltr"
+        android:backgroundTint="#fff"
+        android:groupIndicator="@drawable/indicator_expan"
+        android:animateLayoutChanges="true"
+        android:scrollbars="vertical"
+        >
+
+    </ExpandableListView>
+
+
+</LinearLayout>

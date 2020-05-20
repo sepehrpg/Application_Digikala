@@ -11,13 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main_Home.Product.Filters_Product.Act_Filters_Product">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Main_Home.Product.Act_SeeAll_For_newAndPrice"></activity>
+        <activity android:name=".Main_Home.Product.AShow_ListProduct.Act_ShowFirs_ListCat" />
+        <activity android:name=".Main_Home.Product.AShow_ListProduct.Act_ShowListProduct" />
+        <activity android:name=".Main_Home.Product.Filters_Product.Act_Filters_Product" />
         <activity android:name=".Panel_User.Fav.Act_FavList" />
         <activity android:name=".Panel_User.Panel.EditPanel.Act_List_Address" />
         <activity android:name=".Panel_User.Panel.EditPanel.Act_Add_Address" />
@@ -37,7 +34,11 @@
         <activity android:name=".More_Product.More_Product" />
         <activity android:name=".Main_Home.Menu_Navigation.Act_About_Company" />
         <activity android:name=".Act_Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Splash_Screen" />
     </application>

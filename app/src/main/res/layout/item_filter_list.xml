@@ -6,26 +6,37 @@
     android:background="#000"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Txt_NameFilter"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="7dp"
-        android:text="قیمت"
-        android:layout_marginTop="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginLeft="7dp"
-        android:background="#000"
-        android:textColor="#E2E1E1"
-        android:fontFamily="@font/iranian_sans"
-        android:textSize="15dp"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="00.1dp"
-        android:background="#EEDFDEDE"
-        android:layout_marginRight="7dp"
-        android:layout_marginLeft="7dp"
-        />
+        android:orientation="horizontal"
+        android:id="@+id/LineBackItemFiilter"
+
+        >
+        <TextView
+            android:id="@+id/Txt_NameFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:text="قیمت"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
+            android:background="#000"
+            android:textColor="#E2E1E1"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="15dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="00.1dp"
+            android:background="#EEDFDEDE"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
+            />
+    </LinearLayout>
+
+
 
 </LinearLayout>

@@ -24,14 +24,20 @@
         <item name="android:fontFamily">@font/iranian_sans</item>
     </style>
 
+
     <style name="tablayout_font"  parent="Theme.AppCompat.Light.NoActionBar" >
-
         <item name="android:fontFamily">@font/iranian_sans</item>
-
     </style>
+
 
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:layoutDirection">rtl</item>
+    </style>
+
+
+    <style name="CheckBox_Filter" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorControlActivated">#8A8989</item>
+        <item name="colorControlNormal">@android:color/transparent</item>
     </style>
 
 </resources>

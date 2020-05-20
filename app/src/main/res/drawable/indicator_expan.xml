@@ -5,6 +5,6 @@
         android:state_expanded="true"/>
 
     <item android:drawable="@drawable/ic_down"
-        android:state_expanded="true"/>
+        android:state_expanded="false"/>
 
 </selector>
