@@ -62,8 +62,6 @@ public class Adapter_Filters extends RecyclerView.Adapter<Adapter_Filters._Holde
         if (position==sharedPreferences.getInt("pos",-10)){
             holder.nameFilter.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.nameFilter.setTextColor(context.getResources().getColor(R.color.meshkii));
-
-
         }
         else {
             holder.nameFilter.setBackgroundColor(context.getResources().getColor(R.color.black));

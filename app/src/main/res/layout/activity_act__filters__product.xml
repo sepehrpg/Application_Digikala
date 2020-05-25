@@ -169,6 +169,7 @@
                         android:layout_height="wrap_content"
                         android:foregroundGravity="left"
                         android:gravity="left"
+                        android:theme="@style/switchFilter"
                         />
                 </LinearLayout>
 

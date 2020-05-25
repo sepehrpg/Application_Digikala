@@ -28,7 +28,6 @@ public class Api_Child_Filter implements Config {
         final List<FilterModel_ColorAndBrand> list=new ArrayList<>();
 
         final String url=urlHome+"list-productA.php?idcat="+idCat+"&"+valueFilter;
-        Log.i("URLLLL",url);
 
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -100,7 +99,14 @@ public class Api_Child_Filter implements Config {
                         for (int i=0;i<jsonArray.length();i++){
                             JSONObject js=jsonArray.getJSONObject(i);
                             FilterModel_ColorAndBrand model=new FilterModel_ColorAndBrand();
-                            model.setProperty(js.getString("pro"));
+                            model.setNamePeProperty(js.getString("namePe"));
+                            model.setNameEnProperty(js.getString("nameEn"));
+
+
+                            JSONObject val=js.getJSONObject("value");
+                            model.setProperty(val.getString("pro"));
+
+                            //model.setProperty(js.getString("pro"));
                             list.add(model);
                         }
 

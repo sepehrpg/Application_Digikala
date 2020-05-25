@@ -56,6 +56,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Act_Home extends AppCompatActivity implements Api_Category_home.Get_category {
@@ -642,7 +643,6 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
             @Override
             public void ListPost(List<Datamodel_ListProduct> listProductList) {
                 customProductNew=findViewById(R.id.custom_Product_new);
-
                 customProductNew.ViewAndCast("product-new");
                 customProductNew.getList(listProductList,1);
                 customProductNew.setTitle("جدید ترین محصولات");

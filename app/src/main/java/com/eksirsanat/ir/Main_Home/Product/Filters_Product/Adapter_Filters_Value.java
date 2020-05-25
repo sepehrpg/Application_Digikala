@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +29,10 @@ import com.eksirsanat.ir.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_Value._Holder> {
+public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_Value._Holder> implements Filterable {
     Context context;
     List<FilterModel_ColorAndBrand> list;
+    List<FilterModel_ColorAndBrand> Data; //because you are changing list and need to first list when not search
     List<String> property;
 
     ArrayList<String> ListFromPrice=new ArrayList<>();
@@ -45,8 +48,61 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
         this.list=list;
         this.property=property;
         this.getDataFromFilter=getDataFromFilter;
-
+        this.Data=list;
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strinFilter=constraint.toString().trim();
+                if (strinFilter.isEmpty()){
+                    Data=list; //because you are changing list and need to first list when not search
+                }else {
+                    List<FilterModel_ColorAndBrand> filterList=new ArrayList<>();
+                    for (FilterModel_ColorAndBrand addfilter:Data){
+
+                        if (addfilter.getName()!=null){
+                            if (addfilter.getName().toLowerCase().contains(strinFilter.toLowerCase())){ // contains inner name = name for search
+                                filterList.add(addfilter);
+                            }
+                        }
+
+                        if (addfilter.getColor()!=null){
+                            if (addfilter.getColor().toLowerCase().contains(strinFilter.toLowerCase())){
+                                filterList.add(addfilter);
+                            }
+                        }
+
+
+                        if (addfilter.getProperty()!=null){
+                            if (addfilter.getProperty().toLowerCase().contains(strinFilter.toLowerCase())){
+                                filterList.add(addfilter);
+                            }
+                        }
+
+                    }
+                    Data=filterList;
+
+                }
+
+                FilterResults filterResults=new FilterResults();
+                filterResults.values=Data;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
+                Data=(List<FilterModel_ColorAndBrand>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
 
     @NonNull
     @Override
@@ -69,7 +125,7 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
 
     @Override
     public void onBindViewHolder(@NonNull final _Holder holder, final int position) {
-        final FilterModel_ColorAndBrand model=list.get(position);
+        final FilterModel_ColorAndBrand model=Data.get(position);
 
         //Price
         if (model.getFrom_Price()!=null){
@@ -78,6 +134,7 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
 
         //Property
         else if (model.getProperty()!=null){
+            getDataFromFilter.sizeProperty(list.size());
             PropertyFilter(holder,model,position);
         }
 
@@ -93,8 +150,11 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
 
     }
 
+
+
     public interface GetDataFromFilter{
         void get_Price(String from,String to);
+        void  sizeProperty(int size);
     }
 
 
@@ -121,7 +181,7 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return Data.size();
     }
 
 
@@ -166,24 +226,78 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedPreferences.edit();
-                if (isChecked){
+                String Property=sharedPreferences.getString(model.getNameEnProperty(),"null");
 
+                if (isChecked){
                     editor.putInt(model.getProperty()+position,position);
-                    editor.apply();
+
+                    if (Property.equals("null")){
+                        editor.putString(model.getNameEnProperty(),model.getProperty()+"!");
+
+                    }else {
+                        editor.putString(model.getNameEnProperty(),Property+model.getProperty()+"!");
+                    }
                 }
                 else {
+
+                    editor.putString(model.getNameEnProperty(),Property.replace(model.getProperty()+"!",""));
                     editor.remove(model.getProperty()+position);
-                    editor.apply();
                 }
+
+                editor.apply();
+                Log.i("IDCOLOR",sharedPreferences.getString(model.getNameEnProperty(),"nul"));
+
+
+
 
             }
         });
 
     }
+    public void BrandFilter(_Holder holder, final FilterModel_ColorAndBrand model, final int position){
+        holder.textView.setText(model.getName());
+        SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
+        if (position==sharedPreferences.getInt("brand"+position,-10)){
+            holder.textView.setChecked(true);
+        }else {
+            holder.textView.setChecked(false);
+        }
+
+        holder.textView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                String valueBrand=sharedPreferences.getString("valueBrand","null");
+
+                if (isChecked){
+                    editor.putInt("brand"+position,position);
+
+                    if (valueBrand.equals("null")){
+                        editor.putString("valueBrand",model.getId()+",");
+
+                    }else {
+                        editor.putString("valueBrand",valueBrand+model.getId()+",");
+                    }
+                }
+                else {
+                    editor.putString("valueBrand",valueBrand.replace(model.getId()+",",""));
+                    editor.remove("brand"+position);
+                }
+                editor.apply();
+                //Log.i("IDCOLOR",sharedPreferences.getString("valueBrand","nul"));
 
 
-    public void ColorsFilter(_Holder holder, FilterModel_ColorAndBrand model, final int position){
+
+            }
+        });
+    }
+
+
+
+    public void ColorsFilter(_Holder holder, final FilterModel_ColorAndBrand model, final int position){
         holder.txt_color.setText(model.getColor());
+
         GradientDrawable gradientDrawable=new GradientDrawable();
         gradientDrawable.setCornerRadius(100);
         gradientDrawable.setStroke(2,context.getResources().getColor(R.color.meshkii));
@@ -202,46 +316,32 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedPreferences.edit();
+                String valueColor=sharedPreferences.getString("valueColor","null");
+
                 if (isChecked){
                     editor.putInt("color"+position,position);
-                    editor.apply();
+
+                    if (valueColor.equals("null")){
+                        editor.putString("valueColor",model.getIdColor()+",");
+
+                    }else {
+                        editor.putString("valueColor",valueColor+model.getIdColor()+",");
+                    }
 
                 }else {
+                    editor.putString("valueColor",valueColor.replace(model.getIdColor()+",",""));
                     editor.remove("color"+position);
-                    editor.apply();
+
                 }
+                editor.apply();
+
+
 
             }
         });
     }
 
 
-    public void BrandFilter(_Holder holder, FilterModel_ColorAndBrand model, final int position){
-        holder.textView.setText(model.getName());
-        SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
-        if (position==sharedPreferences.getInt("brand"+position,-10)){
-            holder.textView.setChecked(true);
-        }else {
-            holder.textView.setChecked(false);
-        }
-
-        holder.textView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                if (isChecked){
-                    editor.putInt("brand"+position,position);
-                    editor.apply();
-                }
-                else {
-                    editor.remove("brand"+position);
-                    editor.apply();
-                }
-
-            }
-        });
-    }
 
 
     public void PriceFilter(final _Holder holder, final FilterModel_ColorAndBrand model){
@@ -322,6 +422,7 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
                     ArrayAdapter<String> adapter_to=new ArrayAdapter<String>(context,android.R.layout.simple_spinner_dropdown_item,ListToPrice);
                     holder.sp_to.setAdapter(adapter_to);
 
+
                     int getSelectPrice_To=sharedPreferences.getInt("priceT",-10);
                     if (getSelectPrice_To!=-10){
                         holder.sp_to.setSelection(getSelectPrice_To);
@@ -367,7 +468,7 @@ public class Adapter_Filters_Value extends RecyclerView.Adapter<Adapter_Filters_
         SharedPreferences sharedPreferences=context.getSharedPreferences("saveFilter",context.MODE_PRIVATE);
         int getSelectPrice_From=sharedPreferences.getInt("priceF",-10);
         if (getSelectPrice_From!=-10){
-            holder.sp_from.setAdapter(adapter_from);
+            //holder.sp_from.setAdapter(adapter_from);
             holder.sp_from.setSelection(getSelectPrice_From);
         }
     }

@@ -180,6 +180,17 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/Txt_ExitProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="محصولی وجود ندارد"
+        android:gravity="center"
+        android:fontFamily="@font/iranian_sans"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView

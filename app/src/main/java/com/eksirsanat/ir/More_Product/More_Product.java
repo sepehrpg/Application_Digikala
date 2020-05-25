@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -24,16 +28,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.eksirsanat.ir.Action.Convert_PX_To_Dp;
+import com.eksirsanat.ir.Action.FormatNumber_Decimal;
 import com.eksirsanat.ir.Action.Get_Token;
 import com.eksirsanat.ir.Action.Request_Volley;
 import com.eksirsanat.ir.Config;
 import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
+import com.eksirsanat.ir.More_Product.Images.ModelpriceAndGaranti_Moreproduct;
 import com.eksirsanat.ir.More_Product.Images.Slider_PageAdapter_Product;
 import com.eksirsanat.ir.Panel_User.Act_LoginActivity;
 import com.eksirsanat.ir.Property_Header.stickyheader.Act_Property_Header;
 import com.eksirsanat.ir.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,15 +49,11 @@ public class More_Product extends AppCompatActivity implements Config {
 
 
     Context context;
-
-    TextView txt_name,txt_nameEn,txt_tile_toolbar,Tv__sec,Tv_min,Tv_hour,Txt_property;
-
+    TextView txt_name,txt_nameEn,txt_tile_toolbar,Tv__sec,Tv_min,Tv_hour,Txt_property,txt_sumAnddes,txt_moreshowAndClose;
+    TextView txt_price,txt_priceOffer,txt_countColor,txt_garanti;
     Intent GetIntent;
-
     LinearLayout lineTimer,linear_Indicator;
-
     ImageView img_back,img_shop,img_fav;
-
     ViewPager viewPager;
 
     int idView[];
@@ -60,12 +61,16 @@ public class More_Product extends AppCompatActivity implements Config {
     Toolbar toolbar;
     NestedScrollView scrollView;
 
-    String name_title;
+    String name_title,des,sum,price,priceOffer;
 
     int check;
+    boolean CloseAndSho;
 
 
     int ID_PRODUCT;
+
+    Adapter_ColorMoreProduct adapter;
+    RecyclerView recyclerView;
 
 
 
@@ -74,32 +79,51 @@ public class More_Product extends AppCompatActivity implements Config {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more__product);
         Cast();
-        CheckTimer();
         Getproduct();
         OnclickMethod();
         Check_onCreate_Fav();
         Add_Fav();
+
     }
 
     void CheckTimer(){
-
-        String check=GetIntent.getStringExtra("offer");
-        if (check!=null && check.equals("0")){
-            lineTimer.setVisibility(View.GONE);
-        }else {
+        if (priceOffer!=null){
             lineTimer.setVisibility(View.VISIBLE);
             getTimer();
         }
+        else {
+            lineTimer.setVisibility(View.GONE);
+        }
+      /*  String check=GetIntent.getStringExtra("offer");
+        if (check!=null && check.equals("0")){
+            lineTimer.setVisibility(View.GONE);
+        }
+        else if (priceOffer!=null){
+            lineTimer.setVisibility(View.VISIBLE);
+            getTimer();
+        }
+        else {
+            lineTimer.setVisibility(View.VISIBLE);
+            getTimer();
+        }*/
     }
 
     public void Cast(){
+        SharedPreferences sharedPreferences=getSharedPreferences("SelectColor",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
         context=More_Product.this;
         GetIntent=getIntent();
         viewPager=findViewById(R.id.ViewPage_More_Product);
         lineTimer=findViewById(R.id.Linear_Timer_MoreProduct);
-
+        CloseAndSho=false;
         txt_name=findViewById(R.id.Tv_Title_Prodict_fa);
         txt_nameEn=findViewById(R.id.Tv_Title_Prodict_en);
+        txt_sumAnddes=findViewById(R.id.Txt_sumAndDes_MoreProduct);
+        txt_moreshowAndClose=findViewById(R.id.Txt_MoreShowAndClose);
+        recyclerView=findViewById(R.id.Rec_ColorMore);
+
 
         Tv__sec=findViewById(R.id.Tv__sec);
         Tv_min=findViewById(R.id.Tv__min);
@@ -114,12 +138,173 @@ public class More_Product extends AppCompatActivity implements Config {
         txt_tile_toolbar=findViewById(R.id.Tv_Toolbar_Title);
         Txt_property=findViewById(R.id.Txt_property);
 
+
+        txt_price=findViewById(R.id.Txt_PriceMoreProduct);
+        txt_priceOffer=findViewById(R.id.Txt_PriceOfferMoreProduct);
+        txt_countColor=findViewById(R.id.Txt_CountColor);
+        txt_garanti=findViewById(R.id.Txt_Garanti);
+
+
+
+
+
         ID_PRODUCT=Integer.parseInt(GetIntent.getStringExtra("idproduct"));
+
+    }
+
+    void OnclickMethod(){
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                if (scrollY>427){
+                    //toolbar.setBackgroundColor(Color.parseColor("#000"));
+                    //toolbar.setBackgroundColor(getResources().getColor(R.color.red));
+                    toolbar.setBackgroundResource(R.color.ghemezkamrang);
+                    img_shop.setImageResource(R.drawable.ic_store_white);
+                    img_back.setImageResource(R.drawable.ic_back_right_white);
+                }
+                else {
+                    toolbar.setBackgroundResource(R.color.sefidd);
+                    img_shop.setImageResource(R.drawable.ic_store_black_24dp);
+                    img_back.setImageResource(R.drawable.ic_back_right_black);
+                }
+
+
+                if (scrollY>380){
+                    if (check==0){
+                        Animation animation= AnimationUtils.loadAnimation(context,R.anim.anim_toolbar);
+                        txt_tile_toolbar.startAnimation(animation);
+                        check=1;
+                    }
+                    txt_tile_toolbar.setText(name_title);
+
+                }else {
+                    txt_tile_toolbar.setText("");
+                    check=0;
+                }
+            }
+        });
+
+        Txt_property.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nameProduct=txt_name.getText().toString().trim();
+
+                Intent intent=new Intent(context, Act_Property_Header.class);
+                intent.putExtra("nameProduct",nameProduct);
+                String idpro=String.valueOf(ID_PRODUCT);
+                intent.putExtra("idproduct",idpro);
+                startActivity(intent);
+            }
+        });
+
+
+        txt_moreshowAndClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!CloseAndSho){
+                    if (des!=null && !des.equals("null") && !des.equals("") ){
+                        txt_sumAnddes.setText(Html.fromHtml(des));
+                    }else {
+                        txt_sumAnddes.setText(sum);
+                    }
+
+                    txt_moreshowAndClose.setText("بستن");
+                    CloseAndSho=true;
+                }else {
+                    txt_sumAnddes.setText(sum);
+                    txt_moreshowAndClose.setText("ادامه مطلب");
+                    CloseAndSho=false;
+                }
+
+            }
+        });
+
+
+
+
+
 
 
     }
 
 
+    void  Getproduct(){
+        Api_Product_MoreProduct.GetPost(context, ID_PRODUCT, new Api_Product_MoreProduct.InterFace_Product() {
+            @Override
+            public void list(List<DataModer_Product_MoreProduct> data_modelproduct, List<ModelColor_Moreproduct> colorsList, List<ModelpriceAndGaranti_Moreproduct> pricecList, List<ModelPriceOffer_MoreProduct> priceOfferList) {
+
+                for (int i=0; i<data_modelproduct.size() ;i++){
+                    DataModer_Product_MoreProduct productData=data_modelproduct.get(i);
+                    name_title=productData.getName();
+                    txt_name.setText(productData.getName());
+                    txt_nameEn.setText(productData.getNameEn());
+                    des=productData.getDes();
+                    sum=productData.getSum();
+                    txt_sumAnddes.setText(sum);
+                }
+
+                for (int i=0; i<pricecList.size() ;i++){
+                    ModelpriceAndGaranti_Moreproduct pricec=pricecList.get(i);
+                    price=pricec.getPrice_sale();
+                    txt_garanti.setText(pricec.getGaranti());
+                }
+                for (int i=0; i<priceOfferList.size() ;i++){
+                    ModelPriceOffer_MoreProduct offer=priceOfferList.get(i);
+                    priceOffer=offer.getPrice_offer();
+                }
+
+
+                if (priceOffer!=null){
+                    txt_price.setTextColor(getResources().getColor(R.color.ghermez));
+                    txt_price.setText(FormatNumber_Decimal.GetFormatInteger(price)+" تومان ");
+                    txt_price.setPaintFlags(txt_price.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                    txt_priceOffer.setText(FormatNumber_Decimal.GetFormatInteger(priceOffer)+" تومان ");
+
+                }else {
+                    txt_price.setTextColor(getResources().getColor(R.color.sabzporrang));
+                    txt_price.setText(FormatNumber_Decimal.GetFormatInteger(price)+" تومان ");
+                }
+
+
+                if (colorsList.size()>0){
+                    txt_countColor.setText(String.valueOf(colorsList.size())+" رنگ ");
+                    adapter=new Adapter_ColorMoreProduct(More_Product.this,colorsList);
+                    RecyclerView.LayoutManager manager=new LinearLayoutManager(More_Product.this,RecyclerView.HORIZONTAL,false);
+                    recyclerView.setLayoutManager(manager);
+                    recyclerView.setAdapter(adapter);
+                }
+
+                CheckTimer();
+
+
+            }
+        }, new Api_Product_MoreProduct.InterFace_Image() {
+            @Override
+            public void listImage(List<String> Images) {
+
+                if (!Images.isEmpty()) {
+                    idView = new int[Images.size()];
+                    Slider_PageAdapter_Product adapter = new Slider_PageAdapter_Product(context, Images);
+                    viewPager.setAdapter(adapter);
+                    SliderIndicator(Images.size());
+                }
+
+
+            }
+        });
+    }
 
     void Add_Fav(){
         img_fav.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +377,6 @@ public class More_Product extends AppCompatActivity implements Config {
                         }
                     });
                     jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
                     Request_Volley.getInstance(context).add(jsonObjectRequest);
 
                 }
@@ -244,65 +428,6 @@ public class More_Product extends AppCompatActivity implements Config {
 
 
 
-    void OnclickMethod(){
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-
-        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                if (scrollY>427){
-                    //toolbar.setBackgroundColor(Color.parseColor("#000"));
-                    //toolbar.setBackgroundColor(getResources().getColor(R.color.red));
-                    toolbar.setBackgroundResource(R.color.ghemezkamrang);
-                    img_shop.setImageResource(R.drawable.ic_store_white);
-                    img_back.setImageResource(R.drawable.ic_back_right_white);
-                }
-                else {
-                    toolbar.setBackgroundResource(R.color.sefidd);
-                    img_shop.setImageResource(R.drawable.ic_store_black);
-                    img_back.setImageResource(R.drawable.ic_back_right_black);
-                }
-
-
-                if (scrollY>380){
-                    if (check==0){
-                        Animation animation= AnimationUtils.loadAnimation(context,R.anim.anim_toolbar);
-                        txt_tile_toolbar.startAnimation(animation);
-                        check=1;
-                    }
-                    txt_tile_toolbar.setText(name_title);
-
-                }else {
-                    txt_tile_toolbar.setText("");
-                    check=0;
-                }
-            }
-        });
-
-        Txt_property.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String nameProduct=txt_name.getText().toString().trim();
-
-                Intent intent=new Intent(context, Act_Property_Header.class);
-                intent.putExtra("nameProduct",nameProduct);
-                String idpro=String.valueOf(ID_PRODUCT);
-                intent.putExtra("idproduct",idpro);
-                startActivity(intent);
-            }
-        });
-
-
-
-    }
 
 
 
@@ -313,33 +438,6 @@ public class More_Product extends AppCompatActivity implements Config {
     }
 
 
-    void  Getproduct(){
-        Api_Product_MoreProduct.GetPost(context, ID_PRODUCT, new Api_Product_MoreProduct.InterFace_Product() {
-            @Override
-            public void list(List<DataModer_Product_MoreProduct> data_modelproduct) {
-                for (int i=0; i<data_modelproduct.size() ;i++){
-                    DataModer_Product_MoreProduct productData=data_modelproduct.get(i);
-                    name_title=productData.getName();
-                    txt_name.setText(productData.getName());
-                    txt_nameEn.setText(productData.getNameEn());
-                }
-
-            }
-        }, new Api_Product_MoreProduct.InterFace_Image() {
-            @Override
-            public void listImage(List<String> Images) {
-
-                if (!Images.isEmpty()){
-                    idView=new int[Images.size()];
-                    Slider_PageAdapter_Product adapter=new Slider_PageAdapter_Product(context,Images);
-                    viewPager.setAdapter(adapter);
-                    SliderIndicator(Images.size());
-                }
-
-
-            }
-        });
-    }
 
 
     void SliderIndicator(final int len){

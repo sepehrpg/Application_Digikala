@@ -16,7 +16,24 @@ public class FilterModel_ColorAndBrand {
     String valueColor;
     String idColor;
 
+    String namePeProperty;
+    String nameEnProperty;
 
+    public String getNamePeProperty() {
+        return namePeProperty;
+    }
+
+    public void setNamePeProperty(String namePeProperty) {
+        this.namePeProperty = namePeProperty;
+    }
+
+    public String getNameEnProperty() {
+        return nameEnProperty;
+    }
+
+    public void setNameEnProperty(String nameEnProperty) {
+        this.nameEnProperty = nameEnProperty;
+    }
 
     public String getIdColor() {
         return idColor;
@@ -49,6 +66,8 @@ public class FilterModel_ColorAndBrand {
     public void setProperty(String property) {
         this.property = property;
     }
+
+
 
     public String getTo_price() {
         return to_price;

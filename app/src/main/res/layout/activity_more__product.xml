@@ -31,7 +31,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/ic_store_black" />
+                android:src="@drawable/ic_store_black_24dp" />
 
             <TextView
                 android:id="@+id/Tv_Toolbar_Title"
@@ -44,6 +44,8 @@
                 android:fontFamily="@font/iranian_sans"
                 android:textColor="#fff"
                 android:layout_marginRight="15dp"
+                android:lines="2"
+                android:ellipsize="end"
                 />
 
 
@@ -158,32 +160,62 @@
             </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/Tv_Title_Prodict_fa"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="تست نام محصول شرکت من"
-                    android:layout_margin="10dp"
-                    android:textColor="#797575"
-                    android:fontFamily="@font/iranian_sans"
-                    />
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="30dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iranian_sans"
+                        android:textColor="#201F1F"
+                        android:text="نام فارسی محصول : " />
+                    <TextView
+                        android:id="@+id/Tv_Title_Prodict_fa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iranian_sans"
+                        android:textColor="#797575"
+                        tools:text="تست نام محصول شرکت من" />
+                </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textColor="#201F1F"
+                    android:text="نام انگلیسی محصول : " />
                 <TextView
                     android:id="@+id/Tv_Title_Prodict_en"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="تست نام محصول"
-                    android:layout_margin="10dp"
                     android:textColor="#797575"
                     android:fontFamily="@font/iranian_sans"
                     />
+            </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/Linear_Timer_MoreProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -246,7 +278,6 @@
 
                         <TextView
                             android:id="@+id/Tv_hour"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="4dp"
@@ -265,7 +296,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="#7E7D7D"
                     />
 
@@ -298,7 +329,7 @@
                             <ImageView
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@drawable/ic_favorite_border_black_24dp"
+                                android:background="@drawable/ic_property"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 />
@@ -338,7 +369,7 @@
                             <ImageView
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@drawable/ic_favorite_border_black_24dp"
+                                android:background="@drawable/ic_user_message"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 />
@@ -361,20 +392,272 @@
 
                 </LinearLayout>
 
-
-
-
-                <TextView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/TestScroll"
-                    />
+                    android:layout_margin="12dp"
+                    android:background="#fff"
+                    app:cardCornerRadius="5dp"
+                    android:backgroundTint="#fff"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"
+                        >
 
-                <TextView
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="رنگ ها"
+                                android:fontFamily="@font/iranian_sans"
+                                android:textSize="14dp"
+                                />
+                            <TextView
+                                android:id="@+id/Txt_CountColor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="3رنگ"
+                                android:fontFamily="@font/iranian_sans"
+                                android:textSize="14dp"
+                                />
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Rec_ColorMore"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="15dp"
+
+                            >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_verified_user_black_24dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginLeft="7dp"
+                                android:layout_gravity="center_vertical"
+                                />
+
+                            <TextView
+                                android:layout_marginRight="7dp"
+                                android:layout_marginLeft="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="گارانتی :"
+                                android:layout_gravity="center_vertical"
+                                />
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/Txt_Garanti"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_width="0dp"
+                                android:gravity="right"
+                                android:layout_height="wrap_content"
+                                tools:text="گارانتی 3 ماهه گلدیران"
+                                android:layout_gravity="center_vertical"
+                                />
+
+                        </LinearLayout>
+
+
+
+
+                        <View
+                            android:layout_marginTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.7dp"
+                            android:background="#eeeeee"
+                            />
+
+
+                        <TextView
+                            android:layout_marginRight="7dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="آماده ارسال از انبار"
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="14dp"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_car"
+                            />
+
+                        <TextView
+                            android:layout_marginRight="7dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="بسته بندی و ارسال از درب کارخانه"
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="14dp"
+                            android:drawableRight="@drawable/ssstore"
+                            android:drawablePadding="10dp"
+                            />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginRight="7dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="20dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_user_money"
+
+                                />
+
+                            <TextView
+                                android:id="@+id/Txt_PriceMoreProduct"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginLeft="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="26,600,000"
+                                android:fontFamily="@font/iranian_sans"
+                                android:textSize="15dp"
+                                android:textColor="@color/sabzporrang"
+                                />
+
+                            <TextView
+                                android:id="@+id/Txt_PriceOfferMoreProduct"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginLeft="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="26,600,000"
+                                android:fontFamily="@font/iranian_sans"
+                                android:textSize="15dp"
+                                android:textColor="@color/sabzporrang"
+                                />
+
+
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#eeeeee"
+                            android:layout_marginTop="15dp"
+                            />
+
+
+                        <Button
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="افزودن به سبد خرید"
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="15dp"
+                            android:gravity="center|center_vertical"
+                            android:background="#34B62B"
+                            android:drawableRight="@drawable/ic_store_black_24dp"
+                            android:drawableTint="#fff"
+                            android:textColor="#fff"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/TestScroll"
-                    />
+                    android:layout_margin="12dp"
+                    android:background="#fff"
+                    app:cardCornerRadius="5dp"
+                    android:backgroundTint="#fff"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/Txt_sumAndDes_MoreProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="خلاصه و تعریف محصولات دیجی کالا"
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="13dp"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#eeeeee"
+                            android:layout_marginTop="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/Txt_MoreShowAndClose"
+                            android:padding="2dp"
+                            android:layout_marginTop="25dp"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ادامه مطلب"
+                            android:layout_gravity="bottom"
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="16dp"
+                            />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.7dp"
+                            android:background="#F06868"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
 
 
 

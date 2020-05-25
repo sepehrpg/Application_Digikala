@@ -28,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Act_Property_Header extends AppCompatActivity implements Config {
@@ -40,7 +42,7 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
     int HeaderDone=0,ChildDone=0;
 
     SectionAdapter adapter;
-    TextView NameProduct;
+    TextView NameProduct,Txt_HeaderProperty;
 
     String url,nameProduct,idproduct;
 
@@ -66,11 +68,11 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
     public void Cast(){
         imag_back=findViewById(R.id.Image_back_Property);
         recyclerView=findViewById(R.id.ReeView_Property);
+        Txt_HeaderProperty=findViewById(R.id.Txt_HeaderProperty);
         nameProduct=getIntent().getStringExtra("nameProduct");
         idproduct=getIntent().getStringExtra("idproduct");
-        NameProduct=findViewById(R.id.nameProduct);
 
-        NameProduct.setText(nameProduct);
+        Txt_HeaderProperty.setText(nameProduct);
 
         imag_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +118,6 @@ public class Act_Property_Header extends AppCompatActivity implements Config {
                         }
 
                     }
-
                     adapter.notifyDataSetChanged();//very Importent
 
                 } catch (JSONException e) {

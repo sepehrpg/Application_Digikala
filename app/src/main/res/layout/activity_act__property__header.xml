@@ -30,32 +30,23 @@
                 />
 
             <TextView
+                android:id="@+id/Txt_HeaderProperty"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:layout_marginRight="15dp"
                 android:text="مشخصات"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textColor="#fff"
+                android:lines="1"
+                android:ellipsize="end"
                 android:fontFamily="@font/iranian_sans"
                 />
 
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/nameProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="NameProduct"
-        android:padding="3dp"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        />
 
 
     <androidx.recyclerview.widget.RecyclerView

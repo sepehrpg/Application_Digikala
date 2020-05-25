@@ -40,4 +40,8 @@
         <item name="colorControlNormal">@android:color/transparent</item>
     </style>
 
+    <style name="switchFilter">
+        <item name="android:colorControlActivated">@color/sabzporrang</item>
+    </style>
+
 </resources>

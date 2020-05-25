@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,8 +24,7 @@ import com.eksirsanat.ir.Search_Product.Act_Search_Product;
 import java.util.List;
 
 public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Class.getText {
-
-    TextView txt_toolbar,title_order;
+    TextView txt_toolbar,title_order,Txt_ExitProduct;
     LinearLayout line_filter,lint_order;
     ImageView img_order_product,img_back,img_search;
     ;
@@ -34,17 +35,25 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
     String title;
     int order=1;
 
+    String moreUrl=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__show_list_product);
         Cast();
         onClick();
-        SetRec(1);
+        SetRec(1,moreUrl);
 
     }
 
     void Cast(){
+        SharedPreferences filter=getSharedPreferences("FiltersList",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor1=filter.edit();
+        editor1.clear();
+        editor1.apply();
+
+
         img_search=findViewById(R.id.Img_search_Main_Toolbar);
         line_filter=findViewById(R.id.Line_Filter);
         lint_order=findViewById(R.id.Line_OrderProduct);
@@ -53,6 +62,9 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
         img_back=findViewById(R.id.Close_Main_Toolbar);
         recyclerView=findViewById(R.id.Rec_ProductGroup);
         txt_toolbar=findViewById(R.id.Title_Custom_Toolbar);
+        Txt_ExitProduct=findViewById(R.id.Txt_ExitProduct);
+        Txt_ExitProduct.setVisibility(View.GONE);
+
         idCat=getIntent().getStringExtra("idcat");
         nameTitle=getIntent().getStringExtra("name");
         //SharedPreferences sharedPreferences=getSharedPreferences("radio",0);
@@ -108,12 +120,12 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
                     if (order==1){
                         order=2;
                         img_order_product.setImageDrawable(getResources().getDrawable(R.drawable.ic_horizontal));
-                        SetRec(order);
+                        SetRec(order,moreUrl);
                     }
                     else {
                         order=1;
                         img_order_product.setImageDrawable(getResources().getDrawable(R.drawable.ic_vertical));
-                        SetRec(order);
+                        SetRec(order,moreUrl);
                     }
 
 
@@ -123,16 +135,34 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
 
             }
         });
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences filter=getSharedPreferences("FiltersList", Context.MODE_PRIVATE);
+        moreUrl=filter.getString("newUrl",null);
+        SetRec(order,moreUrl);
+
 
     }
 
 
 
-    void SetRec(final int orders){
 
-        Api_List_Product.GetListCategory_2(Act_ShowListProduct.this, idCat, new Api_List_Product.GetAllList() {
+    void SetRec(final int orders, String moreUrl){
+
+        Api_List_Product.GetListCategory_2(Act_ShowListProduct.this, idCat,moreUrl, new Api_List_Product.GetAllList() {
             @Override
             public void get_List(List<All_ListProduct_Model> list) {
+
+                if (list.size()<1){
+                    Txt_ExitProduct.setVisibility(View.VISIBLE);
+                }
+                else {
+                    Txt_ExitProduct.setVisibility(View.GONE);
+                }
 
                 if (orders==1){
                     adapter=new Adapter_Recview_ListProduct(Act_ShowListProduct.this,orders,list);

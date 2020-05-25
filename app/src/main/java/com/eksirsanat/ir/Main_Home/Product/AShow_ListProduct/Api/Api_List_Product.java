@@ -25,15 +25,20 @@ import java.util.List;
 public class Api_List_Product implements Config {
 
 
-    public static void GetListCategory_2(final Context context, String idCat , final GetAllList getAllList){
+    public static void GetListCategory_2(final Context context, String idCat,String moreUrl , final GetAllList getAllList){
 
-
+        String url;
 
         final List<All_ListProduct_Model> list=new ArrayList<>();
 
+        if (moreUrl!=null && !moreUrl.equals("")){
+             url=urlHome+"list-productA.php?idcat="+idCat+moreUrl;
+        }else {
+             url=urlHome+"list-productA.php?idcat="+idCat;
+        }
+        Log.i("URLLL",url);
 
-
-        String url=urlHome+"list-productA.php?idcat="+idCat;
+        //String url=urlHome+"list-productA.php?idcat="+idCat;
 
 
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(0, url, null, new Response.Listener<JSONObject>() {

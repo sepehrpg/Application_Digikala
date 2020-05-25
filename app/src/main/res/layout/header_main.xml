@@ -32,7 +32,7 @@
                 android:id="@+id/Img_store_main"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_store_black_24dp"
+                android:src="@drawable/ssstore"
                 android:tint="#fff"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
