@@ -1,6 +1,7 @@
 package com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,12 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eksirsanat.ir.Cart.Act_BasketCart;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Adapter.Adapter_Recview_ListProduct;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Api.Api_List_Product;
 import com.eksirsanat.ir.Main_Home.Product.Act_SeeAll_For_newAndPrice;
@@ -21,13 +24,14 @@ import com.eksirsanat.ir.Main_Home.Product.Filters_Product.Act_Filters_Product;
 import com.eksirsanat.ir.R;
 import com.eksirsanat.ir.Search_Product.Act_Search_Product;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Class.getText {
     TextView txt_toolbar,title_order,Txt_ExitProduct;
     LinearLayout line_filter,lint_order;
     ImageView img_order_product,img_back,img_search;
-    ;
+
     RecyclerView recyclerView;
 
     String idCat,nameTitle;
@@ -35,17 +39,27 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
     String title;
     int order=1;
 
+    CardView line_header;
+
     String moreUrl=null;
+
+    String searchText;
+    String checkSearch;
+
+    ImageView img_store;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__show_list_product);
         Cast();
+
+
         onClick();
         SetRec(1,moreUrl);
 
     }
+
 
     void Cast(){
         SharedPreferences filter=getSharedPreferences("FiltersList",Context.MODE_PRIVATE);
@@ -55,10 +69,12 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
 
 
         img_search=findViewById(R.id.Img_search_Main_Toolbar);
+        line_header=findViewById(R.id.Line_HeaderListProduct);
         line_filter=findViewById(R.id.Line_Filter);
         lint_order=findViewById(R.id.Line_OrderProduct);
         title_order=findViewById(R.id.Title_order);
         img_order_product=findViewById(R.id.Img_ChangeOrderProduct);
+        img_store=findViewById(R.id.Img_store_Main_toolbar);
         img_back=findViewById(R.id.Close_Main_Toolbar);
         recyclerView=findViewById(R.id.Rec_ProductGroup);
         txt_toolbar=findViewById(R.id.Title_Custom_Toolbar);
@@ -67,9 +83,12 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
 
         idCat=getIntent().getStringExtra("idcat");
         nameTitle=getIntent().getStringExtra("name");
+        checkSearch=String.valueOf(getIntent().getIntExtra("check",0));
+        searchText=getIntent().getStringExtra("searchText");
         //SharedPreferences sharedPreferences=getSharedPreferences("radio",0);
         //title=sharedPreferences.getString("name",null);
         txt_toolbar.setText(nameTitle);
+
 
 
     }
@@ -112,6 +131,14 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
             }
         });
 
+        img_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Act_ShowListProduct.this, Act_BasketCart.class);
+                startActivity(intent);
+            }
+        });
+
         img_order_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,9 +168,15 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
     @Override
     protected void onStart() {
         super.onStart();
-        SharedPreferences filter=getSharedPreferences("FiltersList", Context.MODE_PRIVATE);
-        moreUrl=filter.getString("newUrl",null);
-        SetRec(order,moreUrl);
+
+        try {
+            SharedPreferences filter=getSharedPreferences("FiltersList", Context.MODE_PRIVATE);
+            moreUrl=filter.getString("newUrl",null);
+            SetRec(order,moreUrl);
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }
@@ -153,35 +186,88 @@ public class Act_ShowListProduct extends AppCompatActivity implements Dialog_Cla
 
     void SetRec(final int orders, String moreUrl){
 
-        Api_List_Product.GetListCategory_2(Act_ShowListProduct.this, idCat,moreUrl, new Api_List_Product.GetAllList() {
-            @Override
-            public void get_List(List<All_ListProduct_Model> list) {
+        try {
 
-                if (list.size()<1){
-                    Txt_ExitProduct.setVisibility(View.VISIBLE);
-                }
-                else {
-                    Txt_ExitProduct.setVisibility(View.GONE);
-                }
+            if (checkSearch.equals("1") && searchText!=null && !searchText.equals("")){
+                txt_toolbar.setText("نتیجه جستوجو ");
+                line_header.setVisibility(View.GONE);
 
-                if (orders==1){
-                    adapter=new Adapter_Recview_ListProduct(Act_ShowListProduct.this,orders,list);
-                    RecyclerView.LayoutManager manager=new GridLayoutManager(Act_ShowListProduct.this,1);
-                    recyclerView.setLayoutManager(manager);
-                    recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
+                Api_List_Product.SearchProduct(Act_ShowListProduct.this, searchText, new Api_List_Product.GetAllList() {
+                    @Override
+                    public void get_List(List<All_ListProduct_Model> list) {
+                        if (list.size()<1 || list.isEmpty() || list==null){
+                            Txt_ExitProduct.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            Txt_ExitProduct.setVisibility(View.GONE);
+                            Collections.reverse(list);
+                        }
+                        Log.i("Sizeee",list.size()+"");
+                        Log.i("asdsa","asdasd");
+
+                        if (orders==1){
+                            adapter=new Adapter_Recview_ListProduct(Act_ShowListProduct.this,orders,list);
+                            RecyclerView.LayoutManager manager=new GridLayoutManager(Act_ShowListProduct.this,1);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
 
 
-                }else {
-                    adapter = new Adapter_Recview_ListProduct(Act_ShowListProduct.this, orders, list);
-                    RecyclerView.LayoutManager manager = new GridLayoutManager(Act_ShowListProduct.this, 2);
-                    recyclerView.setLayoutManager(manager);
-                    recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                }
+                        }else {
+                            adapter = new Adapter_Recview_ListProduct(Act_ShowListProduct.this, orders, list);
+                            RecyclerView.LayoutManager manager = new GridLayoutManager(Act_ShowListProduct.this, 2);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
+
+
+            }else {
+
+                Api_List_Product.GetListCategory_2(Act_ShowListProduct.this, idCat,moreUrl, new Api_List_Product.GetAllList() {
+                    @Override
+                    public void get_List(List<All_ListProduct_Model> list) {
+
+                        if (list.size()<1){
+                            Txt_ExitProduct.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            Txt_ExitProduct.setVisibility(View.GONE);
+                        }
+
+                        if (orders==1){
+                            adapter=new Adapter_Recview_ListProduct(Act_ShowListProduct.this,orders,list);
+                            RecyclerView.LayoutManager manager=new GridLayoutManager(Act_ShowListProduct.this,1);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+
+                        }else {
+                            adapter = new Adapter_Recview_ListProduct(Act_ShowListProduct.this, orders, list);
+                            RecyclerView.LayoutManager manager = new GridLayoutManager(Act_ShowListProduct.this, 2);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }
+
+                    }
+                });
 
             }
-        });
+
+
+
+
+
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 

@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.eksirsanat.ir.Action.CallBack_Page.Act_CallBack_Server;
 import com.eksirsanat.ir.Action.Get_Info;
 import com.eksirsanat.ir.Action.Get_Token;
 import com.eksirsanat.ir.Action.Request_Volley;
@@ -100,15 +101,31 @@ public class Act_Main_Profile_User extends AppCompatActivity implements Config {
             int id=dataModel_cLass.getId();
 
 
+            if (id==1){
+                startActivity(new Intent(Act_Main_Profile_User.this, Act_Edit_User.class));
+            }
+            if (id==2){
+                startActivity(new Intent(Act_Main_Profile_User.this, Act_CallBack_Server.class));
+            }
+            if (id==3){
+                Toast.makeText(Act_Main_Profile_User.this, "بن تخفیفی ندارید", Toast.LENGTH_SHORT).show();
+            }
+
             if (id==4){
                 startActivity(new Intent(Act_Main_Profile_User.this, Act_FavList.class));
             }
-            if (id==6){
-                startActivity(new Intent(Act_Main_Profile_User.this, Act_List_Address.class));
+            if (id==5){
+                Toast.makeText(Act_Main_Profile_User.this, "پیامی ندارید", Toast.LENGTH_SHORT).show();
             }
 
-            if (id==1){
-                startActivity(new Intent(Act_Main_Profile_User.this, Act_Edit_User.class));
+            if (id==6){
+                startActivity(new Intent(Act_Main_Profile_User.this, Act_List_Address.class));
+
+
+            }
+            if (id==7){
+                Toast.makeText(Act_Main_Profile_User.this, "این قسمت قفل میباشد", Toast.LENGTH_SHORT).show();
+
             }
 
             if (id==8){

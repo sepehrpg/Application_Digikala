@@ -9,11 +9,15 @@ import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Act_ShowListProduct;
 import com.eksirsanat.ir.R;
 
 import java.util.ArrayList;
@@ -42,12 +46,35 @@ public class Act_Search_Product extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        edt_searc.setText("");
+
+    }
+
     void Cast(){
         back=findViewById(R.id.Img_Search_Back_MAin);
         candel=findViewById(R.id.Img_Search_CancelSearch);
         microphone=findViewById(R.id.Img_Search_microphome);
         //barcode=findViewById(R.id.Img_Search_barcode);
         edt_searc=findViewById(R.id.Edt_Search_Main);
+        edt_searc.setText("");
+    }
+
+
+    void StartSearch(){
+
+        String searchText=edt_searc.getText().toString();
+        if (searchText.isEmpty()){
+
+        }else {
+            Intent intent=new Intent(Act_Search_Product.this, Act_ShowListProduct.class);
+            intent.putExtra("searchText",searchText);
+            intent.putExtra("check",1);
+            startActivity(intent);
+        }
+
     }
 
     void ClickItem(){
@@ -77,6 +104,10 @@ public class Act_Search_Product extends AppCompatActivity {
 
             }
 
+
+
+
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -89,22 +120,28 @@ public class Act_Search_Product extends AppCompatActivity {
         });
 
 
+        edt_searc.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_SEARCH){
+                    StartSearch();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         candel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 edt_searc.setText("");
                 microphone.setVisibility(View.VISIBLE);
-                barcode.setVisibility(View.VISIBLE);
+                //barcode.setVisibility(View.VISIBLE);
                 candel.setVisibility(View.GONE);
             }
         });
 
-        microphone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
     }
 
@@ -127,7 +164,7 @@ public class Act_Search_Product extends AppCompatActivity {
                     startActivityForResult(intent,Request_Code);
 
                 }catch (Exception e){
-
+                    Toast.makeText(Act_Search_Product.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -144,6 +181,16 @@ public class Act_Search_Product extends AppCompatActivity {
                 ArrayList<String> arrayList=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS); //get speach from user
                 String check=String.valueOf(arrayList.get(0));
                 edt_searc.setText(check);
+
+                String searchText=check;
+                if (searchText.isEmpty()){
+
+                }else {
+                    Intent intent=new Intent(Act_Search_Product.this, Act_ShowListProduct.class);
+                    intent.putExtra("searchText",searchText);
+                    intent.putExtra("check",1);
+                    startActivity(intent);
+                }
 
             }
 

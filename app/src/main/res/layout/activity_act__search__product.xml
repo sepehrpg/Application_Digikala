@@ -41,6 +41,8 @@
                 android:textSize="18dp"
                 android:backgroundTint="#fff"
                 android:layout_marginRight="10dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 />
 
             <ImageView

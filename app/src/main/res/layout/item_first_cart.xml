@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:transitionName="image_intent"
+                        android:id="@+id/Img_Item_productF"
+                        android:layout_width="155dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/loading"
+                        />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/Txt_item_nameProductF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="سامسونگ گلکسی پرایم "
+                        android:fontFamily="@font/iranian_sans"
+                        android:textSize="12sp"
+                        android:textColor="#1D1C1C"
+                        android:lines="2"
+                        android:layout_marginTop="25dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/Txt_item_sumProductF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="ظرفیت داخلی 32 گیگابایت "
+                        android:fontFamily="@font/iranian_sans"
+                        android:textSize="11sp"
+                        android:layout_marginTop="15dp"
+                        android:lines="1"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+
+                        >
+                        <TextView
+                            android:id="@+id/Txt_ColorItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="رنگ سبز "
+                            android:fontFamily="@font/iranian_sans"
+                            android:textSize="14sp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/LineForHideCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/iranian_sans"
+                            android:text="تعداد : "
+                            android:layout_gravity="center_vertical"
+                            android:textSize="14sp" />
+
+                        <Spinner
+                            android:id="@+id/Sp_Item_countProductF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            >
+
+                        </Spinner>
+
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        />
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/LinePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#eeee"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="قیمت محصول :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="@color/meshkii"
+                    />
+
+                <TextView
+                    android:id="@+id/Txt_item_PriceProductF"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    tools:text="60,500 تومان"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="@color/sabzporrang"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#eeee"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="تخفیف شگفت انگیز : "
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="@color/ghermez"
+                    />
+
+                <TextView
+                    android:id="@+id/Txt_item_PriceOfferProductF"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    tools:text="22,500 تومان"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="@color/sabzporrang"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#eeee"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="قیمت نهایی : "
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="@color/meshkii"
+                    />
+
+                <TextView
+                    android:id="@+id/Txt_item_PriceTotleProductF"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    tools:text="22,500 تومان"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:textColor="#000"
+                    />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/Txt_Item_DeleteF"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_width="32dp"
+                android:src="@drawable/ic_delete_forever_black_24dp"
+                android:layout_gravity="left"
+                android:layout_height="32dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textColor="@color/ghermez"
+                android:text="حذف از سبد خرید"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#201F1F"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -56,6 +56,13 @@ public class Act_FavList extends AppCompatActivity implements Config {
             img_back=findViewById(R.id.Close_FavList);
             recyclerView=findViewById(R.id.Rec_FavList);
             Get_ListFav();
+
+            img_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         }
 
 
@@ -120,6 +127,7 @@ public class Act_FavList extends AppCompatActivity implements Config {
                     Request_Volley.getInstance(Act_FavList.this).add(jsonObjectRequest);
 
                 }
+
             });
 
             alertdialog.setNegativeButton("لغو عملیات", new DialogInterface.OnClickListener() {

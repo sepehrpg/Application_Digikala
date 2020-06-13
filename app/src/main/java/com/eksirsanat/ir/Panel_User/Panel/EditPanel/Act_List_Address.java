@@ -66,14 +66,20 @@ public class Act_List_Address extends AppCompatActivity {
             @Override
             public void getListAddress(List<DataModel_List_Address> list) {
 
-                textView.setVisibility(View.GONE);
-                address=new Adapter_Rec_ListAddress(Act_List_Address.this,list);
-                recyclerView.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.GONE);
-                RecyclerView.LayoutManager manager=new GridLayoutManager(Act_List_Address.this,1,RecyclerView.VERTICAL,false);
-                recyclerView.setLayoutManager(manager);
-                recyclerView.setAdapter(address);
-                address.notifyDataSetChanged();
+                if (list.size()<1 || list.isEmpty()){
+                    textView.setVisibility(View.VISIBLE);
+
+                }else {
+                    address=new Adapter_Rec_ListAddress(Act_List_Address.this,list);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    RecyclerView.LayoutManager manager=new GridLayoutManager(Act_List_Address.this,1,RecyclerView.VERTICAL,false);
+                    recyclerView.setLayoutManager(manager);
+                    recyclerView.setAdapter(address);
+                    address.notifyDataSetChanged();
+                }
+
+
 
 
 

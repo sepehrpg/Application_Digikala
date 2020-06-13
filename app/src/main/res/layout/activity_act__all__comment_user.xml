@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".More_Product.Comment.Act_All_CommentUser">
+
+    <TextView
+        android:id="@+id/Txt_ShowComment"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="هنوز برای این محصول نظری ثبت نشده"
+        android:gravity="center"
+        android:fontFamily="@font/iranian_sans"
+        android:textSize="15dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/ghermez"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardComment1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginLeft="7dp"
+        android:background="#eeee"
+        android:backgroundTint="#eeee"
+        app:cardCornerRadius="5dp"
+        android:padding="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تعداد نظرات :"
+                    android:gravity="right"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="13dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/Txt_Comment_CountUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="27"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="right"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="12dp"
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardComment2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:background="#fff"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="#fff"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/Txt_DesAllVote_Comment"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="مجموع امتیاز : 3.5 از 5"
+                    android:gravity="right"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="11dp"
+                    />
+
+
+                <RatingBar
+                    android:id="@+id/starVote_Comment"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:numStars="5"
+                    android:progressBackgroundTint="#3A3838"
+                    android:progressTint="#E74714"
+                    android:theme="@style/Rating1"
+                    tools:rating="3" />
+
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Rec_GetVote_Comment"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Rec_CommentAllUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

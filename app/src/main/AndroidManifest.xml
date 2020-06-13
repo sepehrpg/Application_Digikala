@@ -3,15 +3,34 @@
     package="com.eksirsanat.ir">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/digiicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/digiicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main_Home.Product.Act_SeeAll_For_newAndPrice"></activity>
+        <activity android:name=".Action.CallBack_Page.Act_CallBack_Server">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="eksir"/>
+
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".Cart.Act_Base_Cart1" />
+        <activity android:name=".Cart.Act_BasketCart" />
+        <activity android:name=".More_Product.Comment.Act_More_AddComment" />
+        <activity android:name=".More_Product.Comment.Act_Add_Comment" />
+        <activity android:name=".More_Product.Comment.Act_MoreCommentUser" />
+        <activity android:name=".More_Product.Comment.Act_All_CommentUser" />
+        <activity android:name=".Main_Home.Product.Act_SeeAll_For_newAndPrice" />
         <activity android:name=".Main_Home.Product.AShow_ListProduct.Act_ShowFirs_ListCat" />
         <activity android:name=".Main_Home.Product.AShow_ListProduct.Act_ShowListProduct" />
         <activity android:name=".Main_Home.Product.Filters_Product.Act_Filters_Product" />
@@ -34,13 +53,15 @@
         <activity android:name=".More_Product.More_Product" />
         <activity android:name=".Main_Home.Menu_Navigation.Act_About_Company" />
         <activity android:name=".Act_Home">
+
+        </activity>
+        <activity android:name=".Splash_Screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Splash_Screen" />
     </application>
 
 </manifest>

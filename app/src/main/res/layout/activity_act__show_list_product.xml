@@ -23,6 +23,7 @@
         />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/Line_HeaderListProduct"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#fff"

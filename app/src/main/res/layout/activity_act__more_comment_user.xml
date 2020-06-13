@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+
+    >
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    tools:context=".More_Product.Comment.Act_MoreCommentUser">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نام :"
+            android:gravity="right"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="13dp"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:id="@+id/Txt_MoreCommentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="27"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
+            android:gravity="right"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="12dp"
+            android:layout_gravity="center"
+
+            />
+
+        <TextView
+            android:id="@+id/Txt_MoreCommentDate"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"
+            tools:text="1399/5/14"
+            android:layout_gravity="center"
+            />
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardComment2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:background="#fff"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="#fff"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/Txt_DesAllVote_MoreComment"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="مجموع امتیاز : 3.5 از 5"
+                    android:gravity="right"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="11dp"
+                    />
+
+
+                <RatingBar
+                    android:id="@+id/starVote_MoreComment"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:numStars="5"
+                    android:progressBackgroundTint="#3A3838"
+                    android:progressTint="#E74714"
+                    android:theme="@style/Rating1"
+                    tools:rating="3" />
+
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Rec_GetVote_MoreComment"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:background="#fff"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="#fff"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_positive"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="نکات مثبت :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/Txt_Mosbat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="باطری قوی داره و شارژ خیلی خوب نگه میداره دوربینش هم نسبت به هم رده های خودش خوبه و حرفی برای گفتن داره "
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="13sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#EEAFADAD"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_margin="5dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_negative"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="نکات منفی :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="15sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+                >
+                <TextView
+                    android:id="@+id/Txt_Manfi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="جنس بدنش ضعیفه و حافظه داخلی هم 8 گیگ بیشتر نداره در صورتی که هم رده های این گوشی حافظه بیشتری دارند و میتونست توی این مورد بهتر عمل کنه"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#EEAFADAD"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="15sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="جمع بندی"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:id="@+id/Txt_Comment_MoreUser"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="13sp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                tools:text="در کل گوشی خوبیه و نسبت به قیمتی که داره امکانات قابل قبولی اراعه کرده من پیشنهاد میکنم که اگر قصد خرید گوشی تو این قیمت را دارید این گوشی رو بگیرید"
+                />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

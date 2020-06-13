@@ -32,7 +32,7 @@
             android:layout_weight="1"
             tools:text="ثبت نام"
             android:gravity="right|center_vertical"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:paddingRight="10dp"
             android:fontFamily="@font/iranian_sans"
             android:textColor="#fff"

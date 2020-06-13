@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eksirsanat.ir.Cart.Act_BasketCart;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Act_ShowListProduct;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.All_ListProduct_Model;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Api.Api_List_Product;
@@ -79,6 +80,7 @@ public class Act_Cat_Home extends AppCompatActivity {
         img_back=findViewById(R.id.Close_Main_Toolbar);
         title_tolbar=findViewById(R.id.Title_Custom_Toolbar);
         img_search=findViewById(R.id.Img_search_Main_Toolbar);
+        img_store=findViewById(R.id.Img_store_Main_toolbar);
         title_tolbar.setText(nameCat);
 
 
@@ -94,6 +96,13 @@ public class Act_Cat_Home extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(context, Act_Search_Product.class));
 
+            }
+        });
+
+        img_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, Act_BasketCart.class));
             }
         });
 

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".Cart.Act_BasketCart">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ToolbarCart"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layoutDirection="rtl"
+        android:background="@color/ghemezkamrang">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="left|center_vertical"
+
+            >
+
+            <ImageView
+                android:id="@+id/Close_Main_Toolbar"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:src="@drawable/ic_back_right_white"
+
+                />
+            <TextView
+                android:id="@+id/Title_Custom_Toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="سبد خرید شما"
+                android:gravity="right|center_vertical"
+                android:textSize="18dp"
+                android:paddingRight="10dp"
+                android:fontFamily="@font/iranian_sans"
+                android:textColor="#fff"
+                />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@+id/ToolbarCart"
+        android:id="@+id/CardCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:background="#eeee"
+        android:backgroundTint="#eeee"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="15dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="جمع کل خرید :"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="15sp"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:id="@+id/Txt_TotalPrice_FirstCart"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="left"
+                android:layout_height="match_parent"
+                tools:text="60,500 تومان"
+                android:fontFamily="@font/iranian_sans"
+                android:textSize="15sp"
+                android:textColor="#048309"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/CardCart"
+        android:id="@+id/Rec_FirstCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:padding="3dp"
+        android:layout_above="@+id/Txt_OkFirstCart"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/Txt_OkFirstCart"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="خرید خود را نهایی کنید"
+            android:fontFamily="@font/iranian_sans"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:background="@color/sabz"
+            android:textColor="#fff"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
+            android:drawableTint="#fff"
+            />
+
+
+
+    <TextView
+        android:id="@+id/ShowBasketHide"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iranian_sans"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="سبد خرید خالی است"
+        android:padding="4dp"
+        android:textColor="#000"
+        android:layout_centerInParent="true"
+        />
+
+
+
+
+
+</RelativeLayout>

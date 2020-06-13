@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:background="#eeee"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="کد سفارش :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/itemCode"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="123123213213"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="12dp"
+                    android:gravity="right"
+                    android:textColor="@color/ghermez"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="تاریخ ثبت  سفارش :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/ItemDate"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="1399/3/4"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="12dp"
+                    android:gravity="right"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Txt_I_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:background="#eeee"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="مجموع پرداختی :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/ItemPrice"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="455,000"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="12dp"
+                    android:gravity="right"
+                    android:textColor="@color/sabzporrang"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="وضعیت مرسوله :"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/StatusItem"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="پرداخت شده در حال بررسی"
+                    android:fontFamily="@font/iranian_sans"
+                    android:textSize="12dp"
+                    android:gravity="right"
+                    />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -12,7 +12,8 @@ public class Get_Token {
         if (token==null){
             //return "134t";
             return null;
+        }else {
+            return token;
         }
-        return token;
     }
 }

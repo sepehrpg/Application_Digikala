@@ -11,26 +11,37 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.allenliu.badgeview.BadgeFactory;
+import com.allenliu.badgeview.BadgeView;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.eksirsanat.ir.Action.CallBack_Page.Act_CallBack_Server;
 import com.eksirsanat.ir.Action.Convert_PX_To_Dp;
 import com.eksirsanat.ir.Action.Get_Token;
+import com.eksirsanat.ir.Cart.Act_BasketCart;
+import com.eksirsanat.ir.Cart.Api_Adapter_Database.DataModel_DbProduct;
+import com.eksirsanat.ir.Cart.Api_Adapter_Database.Db_CartFirst;
 import com.eksirsanat.ir.Main_Home.Category_Main.Adapter_RecyclerView_Catagory_Home;
 import com.eksirsanat.ir.Main_Home.Category_Main.Api_Category_home;
 import com.eksirsanat.ir.Main_Home.Category_Main.Datamodel_Category_Home;
@@ -49,15 +60,19 @@ import com.eksirsanat.ir.Main_Home.pack_timer.Api_Timer;
 import com.eksirsanat.ir.Panel_User.Act_LoginActivity;
 import com.eksirsanat.ir.Search_Product.Act_Search_Product;
 import com.eksirsanat.ir.ViewPager_Tablayout_Category.Act_ViewPager_Category;
+
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
+
+
 
 public class Act_Home extends AppCompatActivity implements Api_Category_home.Get_category {
 
@@ -75,6 +90,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
     Adapter_RecyclerView_SpanCount_Home adapterCount;
 
+    RelativeLayout  img_store;
 
     Custom_Product customProduct,customProductNew;
 
@@ -98,9 +114,11 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
 
 
+    Db_CartFirst database;
 
+    TextView txt_counter;
 
-    ImageView img_search,img_store,img_search_back,menu,img_profile;
+    ImageView img_search,img_search_back,menu,img_profile;
     EditText edt_search;
 
 
@@ -123,16 +141,19 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
         viewPager=findViewById(R.id.viewPager_home);
         Rec_Btn_category_home=findViewById(R.id.Rec_Btn_category_home);
         Rec_SpanCount=findViewById(R.id.Rec_SpanCount);
+        txt_counter=findViewById(R.id.Txt_Counter);
         Tv__sec=findViewById(R.id.Tv__sec);
         Tv_min=findViewById(R.id.Tv__min);
         Tv_hour=findViewById(R.id.Tv_hour);
         img_profile=findViewById(R.id.Profile);
         img_search=findViewById(R.id.Img_search);
+        img_store=findViewById(R.id.Img_store_main);
         lineTimer=findViewById(R.id.LinearTimer);
         LinearIndicator=findViewById(R.id.LinearIndicator);
         drwLayout=findViewById(R.id.drwLayout);
         menu=findViewById(R.id.menu);
         Navi=findViewById(R.id.Navi_Menu);
+        database=new Db_CartFirst(this);
         Navigation_Method();
         Header();
         onClick();
@@ -146,6 +167,15 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
                 drwLayout.openDrawer(Gravity.RIGHT );
             }
         });
+
+
+        img_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Act_Home.this, Act_BasketCart.class));
+            }
+        });
+
     }
 
 
@@ -159,6 +189,46 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
 
     public void Navigation_Method(){
+
+        try {
+            List<DataModel_DbProduct> list = database.get_Info_Db();
+            if (list.size()>0){
+                txt_counter.setVisibility(View.VISIBLE);
+                txt_counter.setText(list.size()+"");
+            }else {
+                txt_counter.setVisibility(View.GONE);
+
+            }
+
+
+
+
+
+            /*BadgeFactory.create(Act_Home.this).setTextColor(Color.RED)
+                    .setWidthAndHeight(20,20)
+                    .setBadgeBackground(Color.WHITE)
+                    .setTextSize(8)
+                    .setBadgeGravity(Gravity.RIGHT|Gravity.TOP)
+                    .setBadgeCount(20)
+                    .setShape(BadgeView.SHAPE_CIRCLE)
+                    .bind(img_store);*/
+
+           /* BadgeView badgeView=new BadgeView(Act_Home.this);
+            badgeView.setWidthAndHeight(20,20);
+            badgeView.setBadgeBackground(Color.WHITE);
+            badgeView.setBadgeCount(20);
+            badgeView.setTextSize(8);
+            badgeView.setBadgeGravity(Gravity.RIGHT|Gravity.TOP);
+            badgeView.bind(img_store);*/
+            //BadgeFactory.createCircle(Act_Home.this).setBadgeCount(20).bind(img_store);
+
+
+
+        }catch (Exception e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
 
         Navi.setNavigationItemSelectedListener( new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -178,6 +248,7 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
                 }
                 if (id==R.id.buy){
+                    startActivity(new Intent(Act_Home.this,Act_BasketCart.class));
                 }
                 if (id==R.id.product_sale){
 
@@ -187,6 +258,10 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
                 }
                 if (id==R.id.product_show){
+                    Intent intent=new Intent(Act_Home.this, Act_SeeAll_For_newAndPrice.class);
+                    intent.putExtra("nameCat","product-new");
+                    intent.putExtra("check","1");
+                    startActivity(intent);
                 }
 
                 if (id==R.id.product_new){
@@ -196,8 +271,8 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
                 }
                 if (id==R.id.settings){
-
-
+                    //Intent intent=new Intent(Act_Home.this, Act_CallBack_Server.class);
+                    //startActivity(intent);
                 }
                 if (id==R.id.question){
                 }
@@ -216,6 +291,11 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
         View view=Navi.getHeaderView(0);
         TextView dg=view.findViewById(R.id.LoginAndRegister);
         TextView NameUser=view.findViewById(R.id.NameUser);
+
+        TextView view1=(TextView) Navi.getMenu().findItem(R.id.buy).getActionView();
+        List<DataModel_DbProduct> list = database.get_Info_Db();
+
+        view1.setText(list.size()+"");
 
         dg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,8 +351,21 @@ public class Act_Home extends AppCompatActivity implements Api_Category_home.Get
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        TextView view1=(TextView) Navi.getMenu().findItem(R.id.buy).getActionView();
+        List<DataModel_DbProduct> list = database.get_Info_Db();
+        view1.setText(list.size()+"");
 
+        if (list.size()>0){
+            txt_counter.setVisibility(View.VISIBLE);
+            txt_counter.setText(list.size()+"");
+        }else {
+            txt_counter.setVisibility(View.GONE);
 
+        }
+    }
 
 
     //slider............................................................................

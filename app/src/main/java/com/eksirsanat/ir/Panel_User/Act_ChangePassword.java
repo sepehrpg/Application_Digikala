@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eksirsanat.ir.Cart.Act_BasketCart;
 import com.eksirsanat.ir.Panel_User.Api.Api_Panel;
 import com.eksirsanat.ir.R;
 import com.eksirsanat.ir.Search_Product.Act_Search_Product;
@@ -54,6 +55,8 @@ public class Act_ChangePassword extends AppCompatActivity {
 
         api_panel=new Api_Panel(this,progressWheel);
 
+
+
     }
 
     void onClick(){
@@ -72,6 +75,14 @@ public class Act_ChangePassword extends AppCompatActivity {
             }
         });
 
+
+        img_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Act_ChangePassword.this, Act_BasketCart.class));
+
+            }
+        });
     }
 
 

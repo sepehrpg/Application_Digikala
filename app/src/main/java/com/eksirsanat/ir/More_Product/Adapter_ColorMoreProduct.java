@@ -48,6 +48,12 @@ public class Adapter_ColorMoreProduct extends RecyclerView.Adapter<Adapter_Color
 
         if (getPos==-10){
             if (position==0){
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putInt("posColor",position);
+                editor.putString("idColor",model.getId());
+                editor.putString("valueColor",model.getValue());
+                editor.putString("nameColor",model.getName());
+                editor.apply();
                 GradientDrawable border=new GradientDrawable();
                 border.setColor(Color.parseColor("#eeeeee"));
                 if (model.getValue().equals("#FCF9F9")){
@@ -113,6 +119,9 @@ public class Adapter_ColorMoreProduct extends RecyclerView.Adapter<Adapter_Color
                 SharedPreferences sharedPreferences=context.getSharedPreferences("SelectColor",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putInt("posColor",position);
+                editor.putString("idColor",model.getId());
+                editor.putString("valueColor",model.getValue());
+                editor.putString("nameColor",model.getName());
                 editor.apply();
                 notifyDataSetChanged();
             }

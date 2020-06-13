@@ -30,7 +30,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@color/ghemezkamrang"
 
         >
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:gravity="left"
+            android:gravity="left|center_vertical"
             >
 
             <ImageView
@@ -50,13 +50,49 @@
                 android:tint="#fff"
                 android:layout_marginRight="9dp"
                 android:layout_marginLeft="9dp"
-                android:layout_gravity="right"
+                android:layout_gravity="right|center_vertical"
                 />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="47dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Img_store_main"
+                >
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/ic_store_white"
+                    android:tint="#fff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/Txt_Counter"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:background="@drawable/circle_image_2"
+                    tools:text="200"
+                    android:textSize="9dp"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:lines="1"
+                    android:textColor="#000"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    />
+
+            </RelativeLayout>
+
+
 
             <ImageView
                 android:id="@+id/Img_search"
@@ -68,14 +104,7 @@
                 android:layout_marginLeft="15dp"
                 />
 
-            <ImageView
-                android:id="@+id/Img_store_main"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:src="@drawable/ic_store_white"
-                android:tint="#fff"
-                android:layout_marginLeft="15dp"
-                />
+
 
             <ImageView
                 android:id="@+id/Profile"
@@ -296,3 +325,34 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
+<!--
+<RelativeLayout
+android:layout_width="50dp"
+android:layout_height="wrap_content"
+    >
+<ImageView
+    android:id="@+id/Img_store_main"
+    android:layout_width="27dp"
+    android:layout_height="27dp"
+    android:src="@drawable/ic_store_white"
+    android:tint="#fff"
+    android:layout_centerHorizontal="true"
+    android:layout_marginLeft="15dp"
+    />
+
+<TextView
+    android:layout_width="23dp"
+    android:layout_height="23dp"
+    android:background="@drawable/circle_image_2"
+    android:text="200"
+    android:textSize="9dp"
+    android:gravity="center"
+    android:lines="1"
+    android:textColor="#000"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    />
+
+</RelativeLayout>-->

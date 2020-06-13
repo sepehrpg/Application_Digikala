@@ -49,6 +49,8 @@ public class Adapter_Rec_ListAddress extends RecyclerView.Adapter<Adapter_Rec_Li
             SharedPreferences sharedPreferences=context.getSharedPreferences("address",0);
             SharedPreferences.Editor editor=sharedPreferences.edit();
             editor.putInt("position",position);
+            editor.putString("idAddress",model.getId());
+            editor.putString("mainAddress",model.getAddress());
             editor.apply();
             holder.select.setText("انتخاب شده");
             holder.select.setTextColor(context.getResources().getColor(R.color.ghermez));
@@ -78,6 +80,8 @@ public class Adapter_Rec_ListAddress extends RecyclerView.Adapter<Adapter_Rec_Li
                             SharedPreferences sharedPreferences=context.getSharedPreferences("address",0);
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putInt("position",position);
+                            editor.putString("idAddress",model.getId());
+                            editor.putString("mainAddress",model.getAddress());
                             editor.apply();
                             holder.select.setText("انتخاب شده");
                             holder.select.setTextColor(context.getResources().getColor(R.color.ghermez));

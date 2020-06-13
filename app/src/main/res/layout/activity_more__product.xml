@@ -120,13 +120,14 @@
             android:background="#f5f5f5"
             >
 
-            <LinearLayout
+   <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="#f5f5f5"
 
                 >
+
 
 
 
@@ -300,7 +301,7 @@
                     android:background="#7E7D7D"
                     />
 
-                <LinearLayout
+               <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -315,6 +316,7 @@
                         app:cardCornerRadius="4dp"
                         android:layout_margin="10dp"
                         app:cardElevation="7dp"
+                        android:layout_weight="1"
 
                         >
                         <LinearLayout
@@ -355,6 +357,8 @@
                         app:cardCornerRadius="4dp"
                         android:layout_margin="10dp"
                         app:cardElevation="7dp"
+                        android:layout_weight="1"
+
                         >
 
                         <LinearLayout
@@ -575,6 +579,7 @@
 
 
                         <Button
+                            android:id="@+id/Txt_Add_To_Basket"
                             android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -656,6 +661,94 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:background="#fff"
+                    app:cardCornerRadius="5dp"
+                    android:backgroundTint="#fff"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="5dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/Txt_DesAllVote"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="مجموع امتیازات فلان قد"
+                                android:gravity="right"
+                                android:fontFamily="@font/iranian_sans"
+                                android:textSize="11dp"
+                                />
+
+
+                                <RatingBar
+                                    android:id="@+id/starVote"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:numStars="5"
+                                    tools:rating="3"
+                                    android:layout_gravity="left"
+                                    style="?android:attr/ratingBarStyleSmall"
+                                    android:theme="@style/Rating1"
+                                    android:progressTint="#E74714"
+                                    android:progressBackgroundTint="#3A3838"
+                                    />
+
+
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Rec_GetVote"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="15dp"
+           app:cardCornerRadius="5dp"
+           >
+           <TextView
+               android:id="@+id/Txt_Add_Comment"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="ثبت نظر"
+               android:fontFamily="@font/iranian_sans"
+               android:textSize="16sp"
+               android:layout_margin="10dp"
+               android:textColor="#2196F3"
+               android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
+               />
+       </androidx.cardview.widget.CardView>
+
 
 
 

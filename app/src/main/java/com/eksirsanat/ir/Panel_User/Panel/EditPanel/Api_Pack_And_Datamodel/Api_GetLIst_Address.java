@@ -32,48 +32,52 @@ public class Api_GetLIst_Address implements Config {
             public void onResponse(JSONObject response) {
                 try {
 
-                    JSONArray jsonArray=response.getJSONArray("address");
+                    if (response.has("address") &&  !response.isNull("address") && !response.getString("address").equals("null")){
+                        JSONArray jsonArray=response.getJSONArray("address");
+                        if (jsonArray.length()>0){
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject js=jsonArray.getJSONObject(i);
 
-                    for (int i=0;i<jsonArray.length();i++){
-                        JSONObject js=jsonArray.getJSONObject(i);
+                                DataModel_List_Address datamodelListProduct=new DataModel_List_Address();
 
-                        DataModel_List_Address datamodelListProduct=new DataModel_List_Address();
+                                if (!js.isNull("id")){
+                                    datamodelListProduct.setId(js.getString("id"));
 
-                        if (!js.isNull("id")){
-                            datamodelListProduct.setId(js.getString("id"));
+                                }
+                                if (!js.isNull("name")){
+                                    datamodelListProduct.setName(js.getString("name"));
 
+                                }
+                                if (!js.isNull("phone")){
+                                    datamodelListProduct.setPhone(js.getString("phone"));
+
+                                }
+                                if (!js.isNull("mobile")){
+                                    datamodelListProduct.setMobile(js.getString("mobile"));
+
+                                }
+                                if (!js.isNull("idcity")){
+                                    datamodelListProduct.setIdcity(js.getString("idcity"));
+
+                                }
+
+                                if (!js.isNull("codeposti")){
+                                    datamodelListProduct.setCodeposti(js.getString("codeposti"));
+                                }
+                                if (!js.isNull("address")){
+                                    datamodelListProduct.setAddress(js.getString("address"));
+
+                                }
+                                if (!js.isNull("iduser")){
+                                    datamodelListProduct.setIduser(js.getString("iduser"));
+                                }
+
+                                list.add(datamodelListProduct);
+
+                            }
                         }
-                        if (!js.isNull("name")){
-                            datamodelListProduct.setName(js.getString("name"));
-
-                        }
-                        if (!js.isNull("phone")){
-                            datamodelListProduct.setPhone(js.getString("phone"));
-
-                        }
-                        if (!js.isNull("mobile")){
-                            datamodelListProduct.setMobile(js.getString("mobile"));
-
-                        }
-                        if (!js.isNull("idcity")){
-                            datamodelListProduct.setIdcity(js.getString("idcity"));
-
-                        }
-
-                        if (!js.isNull("codeposti")){
-                            datamodelListProduct.setCodeposti(js.getString("codeposti"));
-                        }
-                        if (!js.isNull("address")){
-                            datamodelListProduct.setAddress(js.getString("address"));
-
-                        }
-                        if (!js.isNull("iduser")){
-                            datamodelListProduct.setIduser(js.getString("iduser"));
-                        }
-
-                        list.add(datamodelListProduct);
-
                     }
+
 
                     get_list_address.getListAddress(list);
 

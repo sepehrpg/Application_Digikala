@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eksirsanat.ir.Cart.Act_BasketCart;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.All_ListProduct_Model;
 import com.eksirsanat.ir.Main_Home.Product.AShow_ListProduct.Api.Api_List_Product;
 import com.eksirsanat.ir.R;
@@ -44,12 +45,18 @@ public class Act_SeeAll_For_newAndPrice extends AppCompatActivity {
         img_back=findViewById(R.id.Close_Main_Toolbar);
         title_text=findViewById(R.id.Title_Custom_Toolbar);
         img_search=findViewById(R.id.Img_search_Main_Toolbar);
+        img_store=findViewById(R.id.Img_store_Main_toolbar);
         if (nameCat.equals("product-sale")){
             title_text.setText("محصولات پر فروش");
 
         }
         else {
-            title_text.setText("جدید ترین محصولات");
+            String check=getIntent().getStringExtra("check");
+            if (check!=null && !check.equals("")){
+                title_text.setText("پر بازدید ترین ها");
+            }else {
+                title_text.setText("جدید ترین محصولات");
+            }
         }
     }
 
@@ -67,6 +74,16 @@ public class Act_SeeAll_For_newAndPrice extends AppCompatActivity {
                 startActivity(new Intent(Act_SeeAll_For_newAndPrice.this, Act_Search_Product.class));
             }
         });
+
+        img_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Act_SeeAll_For_newAndPrice.this, Act_BasketCart.class));
+
+            }
+        });
+
+
 
 
     }
